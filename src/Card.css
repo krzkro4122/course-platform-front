@@ -1,0 +1,51 @@
+:root {
+    --card-width: clamp(1rem, 10vw, 3rem);
+    --bg-dark: #242424;
+    --poke-color: gold;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* reusable styles here */
+
+.card {
+    background-color: var(--poke-color);
+    border-radius: 0.8rem;
+
+    width: 20vw;
+    aspect-ratio: 1.6 / 1;
+
+    margin: 1rem;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.cardContainer {
+    background-color: var(--bg-dark);
+    border-radius: 0.6rem;
+
+    margin: 0.2rem;
+
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.cardText {
+    display: block;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    overflow: visible;
+    padding: 0.9rem;
+    max-height: 90%;
+    text-decoration: none;
+}
+
+.cardText:hover {
+    color: #888888;
+}

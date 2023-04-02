@@ -1,0 +1,31 @@
+:root {
+  --bg-dark: #242424;
+  --poke-color: gold;
+}
+
+.sideBar {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.card {
+  background-color: var(--poke-color);
+}
+
+.sideBar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.sideBar::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+
+}
+
+.sideBar::-webkit-scrollbar-thumb {
+  width: 1rem;
+  background: black;
+  background: var(--poke-color);
+
+}
