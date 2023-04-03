@@ -1,17 +1,21 @@
+import { MouseEventHandler } from "react";
 import "./Card.css";
 
 interface ICardInfo {
-  cardTitle: string,
-  link: string,
-  key: number
+  cardTitle: string;
+  link: string;
+  key: number;
+  index: number;
+  className?: string;
+  onClick: (index: number) => void;
 }
 
-function Card({ cardTitle, link } : ICardInfo) {
+function Card({ cardTitle, link, className, onClick, index }: ICardInfo) {
   return (
     <div className="card">
-      <div className="cardContainer">
+      <div onClick={() => onClick(index)} className={"cardContainer " + className}>
         <a href={link} className="cardText">
-          {cardTitle} 
+          {cardTitle}
         </a>
       </div>
     </div>

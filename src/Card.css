@@ -50,3 +50,11 @@
 .cardText:hover {
     color: #888888;
 }
+
+.active {
+    background-color: var(--poke-color);
+}
+
+.active>.cardText {
+    color: black;
+}
