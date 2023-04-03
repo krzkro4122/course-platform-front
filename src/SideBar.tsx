@@ -3,9 +3,12 @@ import Card from "./Card";
 import { useContext, useState } from "react";
 import TitlesContext from "./TitlesContext";
 
-const SideBar = () => {
-  const [activeTask, setActiveTask] = useState(0);
+interface ISideBarInfo {
+  activeTask: number;
+  setActiveTask: (index: number) => void;
+}
 
+const SideBar = ({ activeTask, setActiveTask }: ISideBarInfo) => {
   const updateActive = (index: number) => {
     setActiveTask(index);
   };

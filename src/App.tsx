@@ -1,15 +1,10 @@
 import "./App.css";
-import { createContext, useState, useContext } from "react";
-import SideBar from "./SideBar";
-import TitlesContext from "./TitlesContext";
+import TaskDashboard from "./TaskDashboard";
 
 function App() {
-  const titles = useContext(TitlesContext);
   return (
     <div className="App">
-      <TitlesContext.Provider value={titles}>
-        <SideBar />
-      </TitlesContext.Provider>
+      <TaskDashboard />
     </div>
   );
 }

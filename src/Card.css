@@ -48,7 +48,7 @@
 }
 
 .cardText:hover {
-    color: #888888;
+    text-decoration: underline;
 }
 
 .active {
