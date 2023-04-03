@@ -1,9 +1,11 @@
 :root {
   --bg-dark: #242424;
+  --bg-darker: #161616;
   --poke-color: gold;
 }
 
 .sideBar {
+  background-color: var(--bg-darker);
   overflow-y: scroll;
   position: fixed;
   top: 0;
@@ -19,7 +21,7 @@
 }
 
 .sideBar::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--bg-darker);
 
 }
 
