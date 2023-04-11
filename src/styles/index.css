@@ -14,9 +14,11 @@
 
   --accent-color: gold;
   --bg-dark: #242424;
-  --bg-darker: #161616;
+  --bg-darker: #141414;
+  --bg-semi: rgba(255, 255, 255, 0.2);
   --card-width: clamp(1rem, 10vw, 3rem);
   --light: rgba(255, 255, 255, 0.87);
+  --radius: 0.5rem;
 
   color: var(--light);
 }

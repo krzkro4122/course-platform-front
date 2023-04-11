@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import "../styles/Login.css";
 
 interface ITokenHandlers {
@@ -13,7 +13,7 @@ function Login({ setToken, getToken }: ITokenHandlers) {
   const [username, setUsername] = useState<String | undefined>();
   const [password, setPassword] = useState<String | undefined>();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -28,13 +28,14 @@ function Login({ setToken, getToken }: ITokenHandlers) {
   return (
     <div className="loginPage">
       <div className="loginForm">
-        <h1>Welcome{username && <span> {username}</span>}! 👋🏻</h1>
+        <h1>Welcome! 👋🏻</h1>
         <form onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
               placeholder="Username"
               onChange={(event) => setUsername(event.target.value)}
+              autoFocus
             />
           </label>
           <label>
