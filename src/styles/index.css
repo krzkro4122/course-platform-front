@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   width: 100%;
 
@@ -12,8 +11,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --accent-color: gold;
+  --bg-dark: #242424;
+  --bg-darker: #161616;
+  --card-width: clamp(1rem, 10vw, 3rem);
+  --light: rgba(255, 255, 255, 0.87);
+
+  color: var(--light);
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
 
 body {
   margin: 0;

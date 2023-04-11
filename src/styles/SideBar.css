@@ -1,18 +1,8 @@
-:root {
-  --bg-dark: #242424;
-  --bg-darker: #161616;
-  --poke-color: gold;
-}
-
 .sideBar {
   background-color: var(--bg-darker);
   overflow-y: scroll;
   top: 0;
   bottom: 0;
-}
-
-.card {
-  background-color: var(--poke-color);
 }
 
 .sideBar::-webkit-scrollbar {
@@ -27,6 +17,6 @@
 .sideBar::-webkit-scrollbar-thumb {
   width: 1rem;
   background: black;
-  background: var(--poke-color);
+  background: var(--accent-color);
 
 }

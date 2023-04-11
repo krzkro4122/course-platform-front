@@ -1,8 +1,8 @@
-import "../styles/TaskDashboard.css";
 import { useContext, useState } from "react";
+import TitlesContext from "./TitlesContext";
 import SideBar from "./SideBar";
 import Task from "./Task";
-import TitlesContext from "./TitlesContext";
+import "../styles/TaskDashboard.css";
 
 function TaskDashboard() {
   const [activeTask, setActiveTask] = useState(0);

@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import "../styles/Card.css";
 
 interface ICardInfo {

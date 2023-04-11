@@ -1,16 +1,5 @@
-:root {
-    --card-width: clamp(1rem, 10vw, 3rem);
-    --bg-dark: #242424;
-    --poke-color: gold;
-}
-
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
 .card {
-    background-color: var(--poke-color);
+    background-color: var(--accent-color);
     border-radius: 0.8rem;
 
     width: 20vw;
@@ -52,7 +41,7 @@
 }
 
 .active {
-    background-color: var(--poke-color);
+    background-color: var(--accent-color);
 }
 
 .active>.cardText {
