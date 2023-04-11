@@ -1,4 +1,4 @@
-import "./App.css";
+import "../styles/App.css";
 import TaskDashboard from "./TaskDashboard";
 
 function App() {

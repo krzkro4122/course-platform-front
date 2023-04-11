@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import "./Card.css";
+import "../styles/Card.css";
 
 interface ICardInfo {
   cardTitle: string;

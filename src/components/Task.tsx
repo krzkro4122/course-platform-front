@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import "./Task.css";
+import "../styles/Task.css";
 
 interface ITaskInfo {
   taskId: number;

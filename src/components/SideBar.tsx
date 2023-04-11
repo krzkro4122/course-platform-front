@@ -1,4 +1,4 @@
-import "./SideBar.css";
+import "../styles/SideBar.css";
 import Card from "./Card";
 import { useContext, useState } from "react";
 import TitlesContext from "./TitlesContext";

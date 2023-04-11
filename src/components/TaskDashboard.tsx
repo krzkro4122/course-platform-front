@@ -1,4 +1,4 @@
-import "./TaskDashboard.css";
+import "../styles/TaskDashboard.css";
 import { useContext, useState } from "react";
 import SideBar from "./SideBar";
 import Task from "./Task";
