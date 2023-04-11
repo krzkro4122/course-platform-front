@@ -28,7 +28,7 @@ function Login({ setToken, getToken }: ITokenHandlers) {
   return (
     <div className="loginPage">
       <div className="loginForm">
-        <h1>Consider logging in {username}</h1>
+        <h1>Welcome{username && <span> {username}</span>}! 👋🏻</h1>
         <form onSubmit={handleSubmit}>
           <label>
             <input
