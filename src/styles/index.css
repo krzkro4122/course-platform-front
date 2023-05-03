@@ -13,11 +13,15 @@
   -webkit-text-size-adjust: 100%;
 
   --accent-color: gold;
+  --accent-color-low-sat: rgba(255, 215, 0, 0.3);
   --bg-dark: #242424;
   --bg-darker: #141414;
+  --bg-dark-high-sat: rgba(0, 0, 0, 0.6);
+  --bg-darker-low-sat: rgba(255, 255, 255, 0.4);
   --bg-semi: rgba(255, 255, 255, 0.2);
-  --card-width: clamp(1rem, 10vw, 3rem);
   --light: rgba(255, 255, 255, 0.87);
+
+  --card-width: clamp(1rem, 10vw, 3rem);
   --radius: 0.5rem;
 
   color: var(--light);
