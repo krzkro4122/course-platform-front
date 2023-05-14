@@ -65,3 +65,12 @@ button {
 .buttons>*:hover {
     transform: scale(1.05);
 }
+
+.invalid,
+.invalid:focus {
+    outline: solid 2.5px red;
+}
+
+input:focus {
+    outline: solid 2px var(--accent-color);
+}

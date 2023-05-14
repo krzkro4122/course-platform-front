@@ -1,30 +1,49 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import "../styles/Login.css";
 
+type Username = String | undefined;
+type Password = String | undefined;
+type Token = String | undefined;
+
 interface ITokenHandlers {
-  getToken: (
-    username: String | undefined,
-    password: String | undefined
-  ) => String | undefined;
-  setToken: React.Dispatch<React.SetStateAction<String | undefined>>;
+  getToken: (username: Username, password: Password) => Token;
+  setToken: React.Dispatch<React.SetStateAction<Token>>;
 }
 
 function Login({ setToken, getToken }: ITokenHandlers) {
-  const [username, setUsername] = useState<String | undefined>();
-  const [password, setPassword] = useState<String | undefined>();
+  const [username, setUsername] = useState<Username>();
+  const [password, setPassword] = useState<Password>();
+  const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
+  const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    validateUsername();
+    validatePassword();
+  }, [username, password]);
+
+  function validateUsername() {
+    // TODO - username validation
+    setUsernameIsLegal(!!username);
+  }
+
+  function validatePassword() {
+    // TODO - password validation
+    setPasswordIsLegal(!!password);
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsSubmitted(true);
 
-    if (!username || !password) {
-      alert("Supplied credentials are bad lol");
+    if (!usernameIsLegal || !passwordIsLegal) {
       return;
     }
 
     const token = getToken(username, password);
     setToken(token);
-  };
+  }
 
   return (
     <div className="loginPage">
@@ -36,6 +55,7 @@ function Login({ setToken, getToken }: ITokenHandlers) {
               type="text"
               placeholder="Username"
               onChange={(event) => setUsername(event.target.value)}
+              className={!usernameIsLegal && isSubmitted ? "invalid" : ""}
               autoFocus
             />
           </label>
@@ -44,6 +64,7 @@ function Login({ setToken, getToken }: ITokenHandlers) {
               type="password"
               placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
+              className={!passwordIsLegal && isSubmitted ? "invalid" : ""}
             />
           </label>
           <div className="buttons">
