@@ -1,10 +1,13 @@
 import React, { FormEvent, useEffect, useState } from "react";
 
+import {
+  validatePassword,
+  validateUsername,
+  Username,
+  Password,
+  Token,
+} from "../helpers/validation";
 import "../styles/Login.css";
-
-type Username = String | undefined;
-type Password = String | undefined;
-type Token = String | undefined;
 
 interface ITokenHandlers {
   getToken: (username: Username, password: Password) => Token;
@@ -19,19 +22,9 @@ function Login({ setToken, getToken }: ITokenHandlers) {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
-    validateUsername();
-    validatePassword();
+    setUsernameIsLegal(validateUsername(username));
+    setPasswordIsLegal(validatePassword(password));
   }, [username, password]);
-
-  function validateUsername() {
-    // TODO - username validation
-    setUsernameIsLegal(!!username);
-  }
-
-  function validatePassword() {
-    // TODO - password validation
-    setPasswordIsLegal(!!password);
-  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
