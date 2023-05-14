@@ -68,7 +68,7 @@ button {
 
 .invalid,
 .invalid:focus {
-    outline: solid 2.5px red;
+    outline: solid 3.5px red;
 }
 
 input:focus {
