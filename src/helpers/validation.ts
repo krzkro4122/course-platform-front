@@ -3,6 +3,11 @@ export type Password = String | undefined;
 export type Email = String | undefined;
 export type Token = String | undefined;
 
+export enum FormType {
+    Login,
+    Register,
+  }
+
 export function validateUsername(username: Username) {
     // TODO - username validation
     return !!username;

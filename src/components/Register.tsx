@@ -1,18 +1,22 @@
 import React, { FormEvent, useEffect, useState } from "react";
 
-import "../styles/Register.css";
-
-type Username = String | undefined;
-type Password = String | undefined;
-type Email = String | undefined;
-type Token = String | undefined;
+import {
+  validatePassword,
+  validateUsername,
+  Username,
+  Password,
+  Token,
+} from "../helpers/validation";
+import { FormType } from "../helpers/validation";
+import "../styles/Login.css";
 
 interface ITokenHandlers {
-  getToken: (username: Username, password: Password) => Token;
+  getToken: (username: Username, password: Password) => string;
   setToken: React.Dispatch<React.SetStateAction<Token>>;
+  setFormType: React.Dispatch<React.SetStateAction<FormType>>;
 }
 
-function Register({ setToken, getToken }: ITokenHandlers) {
+function register({ setToken, getToken, setFormType }: ITokenHandlers) {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
@@ -20,25 +24,9 @@ function Register({ setToken, getToken }: ITokenHandlers) {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
-    validateUsername();
-    validatePassword();
-    validateEmail();
+    setUsernameIsLegal(validateUsername(username));
+    setPasswordIsLegal(validatePassword(password));
   }, [username, password]);
-
-  function validateUsername() {
-    // TODO - username validation
-    setUsernameIsLegal(!!username);
-  }
-
-  function validatePassword() {
-    // TODO - password validation
-    setPasswordIsLegal(!!password);
-  }
-
-  function validateEmail() {
-    // TODO - password validation
-    setPasswordIsLegal(!!password);
-  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,21 +36,24 @@ function Register({ setToken, getToken }: ITokenHandlers) {
       return;
     }
 
-    const token = getToken(username, password);
-    setToken(token);
+    const token: Token = await getToken(username, password);
+    if (token !== undefined) setToken(token);
+    else alert("Bad credentials!");
   }
 
   return (
-    <div className="loginPage">
-      <div className="loginForm">
+    <div className="registerPage">
+      <div className="registerForm">
         <h1>Welcome! 👋🏻</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
               placeholder="Username"
               onChange={(event) => setUsername(event.target.value)}
-              className={!usernameIsLegal && isSubmitted ? "invalid" : ""}
+              className={
+                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
               autoFocus
             />
           </label>
@@ -71,14 +62,21 @@ function Register({ setToken, getToken }: ITokenHandlers) {
               type="password"
               placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
-              className={!passwordIsLegal && isSubmitted ? "invalid" : ""}
+              className={
+                (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
             />
           </label>
           <div className="buttons">
-            <button id="login" type="submit">
+            <button
+              id="login"
+              className="button"
+              onClick={() => setFormType(FormType.Login)}
+              type="submit"
+            >
               Log in
             </button>
-            <button id="register" type="submit">
+            <button id="register" className="button" type="submit">
               Register
             </button>
           </div>
@@ -88,4 +86,4 @@ function Register({ setToken, getToken }: ITokenHandlers) {
   );
 }
 
-export default Login;
+export default register;
