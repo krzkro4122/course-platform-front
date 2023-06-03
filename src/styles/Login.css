@@ -58,6 +58,10 @@
 
 #register {
     background-color: var(--accent-color-low-sat);
+    display: grid;
+    place-content: center;
+    align-content: stretch;
+    text-decoration: none;
     color: var(--accent-color);
     border: none;
 }

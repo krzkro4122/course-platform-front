@@ -5,13 +5,19 @@ import {
   validateUsername,
   Username,
   Password,
-  Token,
 } from "../helpers/validation";
-import { FormType } from "../helpers/validation";
 import "../styles/Login.css";
 import TokenContext from "./TokenContext";
+import { Navigate } from "react-router-dom";
 
-function register() {
+interface TaskDashboardProps {
+  authentication: {
+    get: boolean;
+    set: React.Dispatch<React.SetStateAction<boolean>>;
+  };
+}
+
+function register({ authentication }: TaskDashboardProps) {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
@@ -33,50 +39,52 @@ function register() {
     }
 
     fetchAndSetToken(username, password);
+    authentication.set(true);
   }
 
-  return (
-    <div className="registerPage">
-      <div className="registerForm">
-        <h1>Welcome! 👋🏻</h1>
-        <form className="form" onSubmit={handleSubmit}>
-          <label>
-            <input
-              type="text"
-              placeholder="Username"
-              onChange={(event) => setUsername(event.target.value)}
-              className={
-                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
-              }
-              autoFocus
-            />
-          </label>
-          <label>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(event) => setPassword(event.target.value)}
-              className={
-                (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
-              }
-            />
-          </label>
-          <div className="buttons">
-            <button
-              id="login"
-              className="button"
-              type="submit"
-            >
-              Log in
-            </button>
-            <button id="register" className="button" type="submit">
-              Register
-            </button>
-          </div>
-        </form>
+  if (authentication.get) {
+    console.log("Navigating to /...");
+    return <Navigate replace to="/" />;
+  } else {
+    return (
+      <div className="registerPage">
+        <div className="registerForm">
+          <h1>Welcome! 👋🏻</h1>
+          <form className="form" onSubmit={handleSubmit}>
+            <label>
+              <input
+                type="text"
+                placeholder="Username"
+                onChange={(event) => setUsername(event.target.value)}
+                className={
+                  (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+                }
+                autoFocus
+              />
+            </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(event) => setPassword(event.target.value)}
+                className={
+                  (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
+                }
+              />
+            </label>
+            <div className="buttons">
+              <button id="login" className="button" type="submit">
+                Log in
+              </button>
+              <button id="register" className="button" type="submit">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default register;

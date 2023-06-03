@@ -13,7 +13,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const authentication = {
     get: isAuthenticated,
-    set: setIsAuthenticated
+    set: setIsAuthenticated,
   };
 
   useEffect(() => {
@@ -37,7 +37,10 @@ function App() {
               path="/login"
               element={<Login authentication={authentication} />}
             />
-            <Route path="/register" element={<Register />} />
+            <Route
+              path="/register"
+              element={<Register authentication={authentication} />}
+            />
           </Routes>
         </BrowserRouter>
       </TokenContext.Provider>

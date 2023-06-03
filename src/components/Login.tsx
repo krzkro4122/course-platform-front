@@ -1,24 +1,23 @@
-import { FormEvent, useContext, useEffect, useMemo, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 
 import {
   validatePassword,
   validateUsername,
   Username,
   Password,
-  Token,
 } from "../helpers/validation";
 import "../styles/Login.css";
 import TokenContext from "./TokenContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 interface TaskDashboardProps {
   authentication: {
     get: boolean;
     set: React.Dispatch<React.SetStateAction<boolean>>;
-  }
+  };
 }
 
-function Login({ authentication } : TaskDashboardProps) {
+function Login({ authentication }: TaskDashboardProps) {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
@@ -77,11 +76,11 @@ function Login({ authentication } : TaskDashboardProps) {
               <button id="login" className="button" type="submit">
                 Log in
               </button>
+              <Link id="register" className="button" to="/register">
+                Register
+              </Link>
             </div>
           </form>
-          <button id="register" className="button" type="submit">
-            Register
-          </button>
         </div>
       </div>
     );
