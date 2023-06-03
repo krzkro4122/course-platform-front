@@ -12,7 +12,7 @@ import {
 } from "../helpers/validation";
 import "../styles/Auth.css";
 import TokenContext from "./TokenContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 interface TaskDashboardProps {
   authentication: {
@@ -31,7 +31,7 @@ function register({ authentication }: TaskDashboardProps) {
   const [lastNameIsLegal, setLastNameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const fetchAndSetToken = useContext(TokenContext);
+  const fetchAndSetToken = useContext(TokenContext).fetchAndSetToken;
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
@@ -57,9 +57,9 @@ function register({ authentication }: TaskDashboardProps) {
     return <Navigate replace to="/" />;
   } else {
     return (
-      <div className="registerPage">
-        <div className="registerForm">
-          <h1>Welcome! 👋🏻</h1>
+      <div className="page">
+        <div className="formContainer">
+          <h1>Register 📝</h1>
           <form className="form" onSubmit={handleSubmit}>
             <label>
               <input
@@ -108,9 +108,9 @@ function register({ authentication }: TaskDashboardProps) {
               <button id="submit" className="button" type="submit">
                 Sign up
               </button>
-              <button id="re-route" className="button" type="submit">
+              <Link id="re-route" className="button" to="/login">
                 Cancel
-              </button>
+              </Link>
             </div>
           </form>
         </div>

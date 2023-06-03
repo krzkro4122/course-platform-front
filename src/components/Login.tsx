@@ -23,7 +23,7 @@ function Login({ authentication }: TaskDashboardProps) {
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const fetchAndSetToken = useContext(TokenContext);
+  const fetchAndSetToken = useContext(TokenContext).fetchAndSetToken;
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
@@ -47,8 +47,8 @@ function Login({ authentication }: TaskDashboardProps) {
     return <Navigate replace to="/" />;
   } else {
     return (
-      <div className="loginPage">
-        <div className="loginForm">
+      <div className="page">
+        <div className="formContainer">
           <h1>Welcome! 👋🏻</h1>
           <form className="form" onSubmit={handleSubmit}>
             <label>

@@ -17,5 +17,10 @@ const fetchAndSetToken = (username: Username, password: Password) => {
     }
 }
 
-const TokenContext = createContext(fetchAndSetToken);
+const authentication = {
+    fetchAndSetToken: fetchAndSetToken,
+    isAuthenticated: false
+}
+
+const TokenContext = createContext(authentication);
 export default TokenContext;

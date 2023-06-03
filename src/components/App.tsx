@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("authenticated") === "true") {
       if (!isAuthenticated) {
-        setIsAuthenticated(true);
+        // setIsAuthenticated(true);
       }
     } else setIsAuthenticated(false);
   }, []);
@@ -29,10 +29,7 @@ function App() {
       <TokenContext.Provider value={fetchToken}>
         <BrowserRouter>
           <Routes>
-            <Route
-              index
-              element={<TaskDashboard isAuthenticated={isAuthenticated} />}
-            />
+            <Route index element={<TaskDashboard />} />
             <Route
               path="/login"
               element={<Login authentication={authentication} />}
