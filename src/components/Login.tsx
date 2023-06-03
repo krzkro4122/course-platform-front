@@ -6,7 +6,7 @@ import {
   Username,
   Password,
 } from "../helpers/validation";
-import "../styles/Login.css";
+import "../styles/Auth.css";
 import TokenContext from "./TokenContext";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -73,10 +73,10 @@ function Login({ authentication }: TaskDashboardProps) {
               />
             </label>
             <div className="buttons">
-              <button id="login" className="button" type="submit">
+              <button id="submit" className="button" type="submit">
                 Log in
               </button>
-              <Link id="register" className="button" to="/register">
+              <Link id="re-route" className="button" to="/register">
                 Register
               </Link>
             </div>

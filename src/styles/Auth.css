@@ -50,13 +50,13 @@
     justify-content: space-between;
 }
 
-#login {
+#submit {
     background-color: var(--accent-color);
     color: var(--bg-dark-high-sat);
     font-weight: 500;
 }
 
-#register {
+#re-route {
     background-color: var(--accent-color-low-sat);
     display: grid;
     place-content: center;

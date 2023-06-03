@@ -3,10 +3,14 @@ import React, { FormEvent, useContext, useEffect, useState } from "react";
 import {
   validatePassword,
   validateUsername,
+  validateFirstName,
+  validateLastName,
   Username,
   Password,
+  FirstName,
+  LastName,
 } from "../helpers/validation";
-import "../styles/Login.css";
+import "../styles/Auth.css";
 import TokenContext from "./TokenContext";
 import { Navigate } from "react-router-dom";
 
@@ -20,13 +24,19 @@ interface TaskDashboardProps {
 function register({ authentication }: TaskDashboardProps) {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
+  const [firstName, setFirstName] = useState<FirstName>();
+  const [lastName, setLastName] = useState<LastName>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
+  const [firstNameIsLegal, setFirstNameIsLegal] = useState<boolean>(true);
+  const [lastNameIsLegal, setLastNameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const fetchAndSetToken = useContext(TokenContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
+    setFirstNameIsLegal(validateFirstName(firstName));
+    setLastNameIsLegal(validateLastName(lastName));
     setPasswordIsLegal(validatePassword(password));
   }, [username, password]);
 
@@ -54,10 +64,32 @@ function register({ authentication }: TaskDashboardProps) {
             <label>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Username / E-mail"
                 onChange={(event) => setUsername(event.target.value)}
                 className={
                   (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+                }
+                autoFocus
+              />
+            </label>
+            <label>
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={(event) => setFirstName(event.target.value)}
+                className={
+                  (!firstNameIsLegal && isSubmitted ? "invalid" : "") + " input"
+                }
+                autoFocus
+              />
+            </label>
+            <label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                onChange={(event) => setLastName(event.target.value)}
+                className={
+                  (!lastNameIsLegal && isSubmitted ? "invalid" : "") + " input"
                 }
                 autoFocus
               />
@@ -73,11 +105,11 @@ function register({ authentication }: TaskDashboardProps) {
               />
             </label>
             <div className="buttons">
-              <button id="login" className="button" type="submit">
-                Log in
+              <button id="submit" className="button" type="submit">
+                Sign up
               </button>
-              <button id="register" className="button" type="submit">
-                Register
+              <button id="re-route" className="button" type="submit">
+                Cancel
               </button>
             </div>
           </form>
