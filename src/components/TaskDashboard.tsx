@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 import TitlesContext from "./TitlesContext";
-import TokenContext from "./TokenContext";
+import { AuthContext } from "./AuthProvider";
 import "../styles/TaskDashboard.css";
 import SideBar from "./SideBar";
 import Task from "./Task";
@@ -10,7 +10,7 @@ import Task from "./Task";
 function TaskDashboard() {
   const titles = useContext(TitlesContext);
   const [activeTaskId, setActiveTask] = useState(0);
-  const isAuthenticated = useContext(TokenContext).isAuthenticated;
+  const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
     console.log("Navigating to /login...");

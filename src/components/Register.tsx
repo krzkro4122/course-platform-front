@@ -11,17 +11,10 @@ import {
   LastName,
 } from "../helpers/validation";
 import "../styles/Auth.css";
-import TokenContext from "./TokenContext";
+import { AuthContext } from "./AuthProvider";
 import { Link, Navigate } from "react-router-dom";
 
-interface TaskDashboardProps {
-  authentication: {
-    get: boolean;
-    set: React.Dispatch<React.SetStateAction<boolean>>;
-  };
-}
-
-function register({ authentication }: TaskDashboardProps) {
+function register() {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
   const [firstName, setFirstName] = useState<FirstName>();
@@ -31,7 +24,8 @@ function register({ authentication }: TaskDashboardProps) {
   const [lastNameIsLegal, setLastNameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const fetchAndSetToken = useContext(TokenContext).fetchAndSetToken;
+  const { isAuthenticated, setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
+
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
@@ -49,10 +43,10 @@ function register({ authentication }: TaskDashboardProps) {
     }
 
     fetchAndSetToken(username, password);
-    authentication.set(true);
+    setIsAuthenticated(true);
   }
 
-  if (authentication.get) {
+  if (isAuthenticated) {
     console.log("Navigating to /...");
     return <Navigate replace to="/" />;
   } else {
