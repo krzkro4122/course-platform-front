@@ -6,20 +6,16 @@ import "../styles/TaskDashboard.css";
 import SideBar from "./SideBar";
 import Task from "./Task";
 
-function TaskDashboard() {
+interface TaskDashboardProps {
+  isAuthenticated: boolean
+}
+
+function TaskDashboard({ isAuthenticated } : TaskDashboardProps) {
   const titles = useContext(TitlesContext);
   const [activeTaskId, setActiveTask] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(() => {
-    const isAuthenticatedString = localStorage.getItem("authenticated");
-    if (isAuthenticatedString === "true") {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []);
 
   if (!isAuthenticated) {
+    console.log("Navigating to /login...");
     return <Navigate replace to="/login" />;
   } else {
     return (

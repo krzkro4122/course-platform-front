@@ -11,7 +11,14 @@ import "../styles/Login.css";
 import TokenContext from "./TokenContext";
 import { Navigate } from "react-router-dom";
 
-function Login() {
+interface TaskDashboardProps {
+  authentication: {
+    get: boolean;
+    set: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+}
+
+function Login({ authentication } : TaskDashboardProps) {
   const [username, setUsername] = useState<Username>();
   const [password, setPassword] = useState<Password>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
@@ -24,14 +31,6 @@ function Login() {
     setPasswordIsLegal(validatePassword(password));
   }, [username, password]);
 
-
-  let isAuthenticated = useMemo(() => {
-    const isAuthenticatedString = localStorage.getItem("authenticated");
-    if (isAuthenticatedString === "true") {
-      // return true;
-    } else return false;
-  }, []);
-
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitted(true);
@@ -41,9 +40,11 @@ function Login() {
     }
 
     fetchAndSetToken(username, password);
+    authentication.set(true);
   }
 
-  if (isAuthenticated) {
+  if (authentication.get) {
+    console.log("Navigating to /...");
     return <Navigate replace to="/" />;
   } else {
     return (
