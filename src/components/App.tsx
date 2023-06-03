@@ -1,61 +1,26 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import TaskDashboard from "./TaskDashboard";
-import Login from "./Login";
+import TokenContext from "./TokenContext";
 import Register from "./Register";
-import { FormType } from "../helpers/validation";
+import Login from "./Login";
 
 import "../styles/App.css";
-
-type Username = String | undefined;
-type Password = String | undefined;
-// type Token = String | undefined;
-
-const SERVER_URL = "I LIKE MEN";
+import { useContext } from "react";
 
 function App() {
-  const [token, setToken] = useState<String | undefined>();
-  const [formType, setFormType] = useState<FormType>(FormType.Login);
-
-  function getToken(username: Username, password: Password) {
-    // const response = await fetch(`${SERVER_URL}${"/login"}`, {
-    //   method: "POST",
-    //   mode: "cors",
-    //   cache: "no-cache",
-    //   credentials: "same-origin",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   redirect: "follow",
-    //   referrerPolicy: "no-referrer",
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password,
-    //   }),
-    // });
-    // const jsonData: TokenInfo = await response.json();
-    // const token = jsonData.token;
-    // return token;
-    return "lol";
-  }
-
+  const fetchToken = useContext(TokenContext);
   return (
     <div className="App">
-      {token ? (
-        <TaskDashboard />
-      ) : formType ? (
-        <Login
-          setFormType={setFormType}
-          getToken={getToken}
-          setToken={setToken}
-        />
-      ) : (
-        <Register
-          setFormType={setFormType}
-          getToken={getToken}
-          setToken={setToken}
-        />
-      )}
+      <TokenContext.Provider value={fetchToken}>
+        <BrowserRouter>
+          <Routes>
+              <Route index element={<TaskDashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+          </Routes>
+        </BrowserRouter>
+      </TokenContext.Provider>
     </div>
   );
 }

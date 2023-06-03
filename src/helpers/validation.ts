@@ -1,7 +1,7 @@
 export type Username = String | undefined;
 export type Password = String | undefined;
 export type Email = String | undefined;
-export type Token = String | undefined;
+export type Token = string;
 
 export enum FormType {
     Login,
