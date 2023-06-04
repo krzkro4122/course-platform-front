@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useContext, useEffect } from "react";
 
 import TaskDashboard from "./TaskDashboard";
 import AuthProvider from "./AuthProvider";
 import Register from "./Register";
 import Login from "./Login";
+
 import "../styles/App.css";
 
 function App() {

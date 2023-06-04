@@ -1,4 +1,4 @@
-import { Children, Dispatch, ReactNode, SetStateAction, createContext, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from "react";
 import { Username, Password, Token } from "../helpers/validation";
 
 const fetchAndSetToken = (username: Username, password: Password) => {
@@ -26,6 +26,11 @@ interface AuthProps {
 
 const AuthProvider = ({children}: AuthProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    const authenticated = localStorage.getItem("authenticated");
+    setIsAuthenticated(authenticated === 'true');
+  }, []);
 
   return (
     <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, fetchAndSetToken}}>

@@ -1,8 +1,9 @@
 import { useContext } from "react";
 
 import TitlesContext from "./TitlesContext";
-import "../styles/SideBar.css";
 import Card from "./Card";
+
+import "../styles/SideBar.css";
 
 interface ISideBarInfo {
   activeTask: number;

@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 
 import {
   validatePassword,
@@ -19,10 +19,12 @@ function register() {
   const [password, setPassword] = useState<Password>();
   const [firstName, setFirstName] = useState<FirstName>();
   const [lastName, setLastName] = useState<LastName>();
+  const [passwordRepeat, setPasswordRepeat] = useState<Password>();
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
   const [firstNameIsLegal, setFirstNameIsLegal] = useState<boolean>(true);
   const [lastNameIsLegal, setLastNameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
+  const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const { isAuthenticated, setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
 
@@ -32,13 +34,14 @@ function register() {
     setFirstNameIsLegal(validateFirstName(firstName));
     setLastNameIsLegal(validateLastName(lastName));
     setPasswordIsLegal(validatePassword(password));
-  }, [username, password]);
+    setPasswordsMatch(password === passwordRepeat);
+  }, [username, password, passwordRepeat, firstName, lastName]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitted(true);
 
-    if (!usernameIsLegal || !passwordIsLegal) {
+    if (!usernameIsLegal || !passwordIsLegal || !passwordsMatch) {
       return;
     }
 
@@ -95,6 +98,16 @@ function register() {
                 onChange={(event) => setPassword(event.target.value)}
                 className={
                   (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
+                }
+              />
+            </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Password (Repeat)"
+                onChange={(event) => setPasswordRepeat(event.target.value)}
+                className={
+                  (!passwordsMatch && isSubmitted ? "invalid" : "") + " input"
                 }
               />
             </label>
