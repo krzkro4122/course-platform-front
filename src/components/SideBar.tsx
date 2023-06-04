@@ -16,7 +16,7 @@ const SideBar = ({ activeTask, setActiveTask }: ISideBarInfo) => {
   };
 
   const taskTitles = useContext(TitlesContext);
-  const titleCards = [...taskTitles, ...taskTitles].map(
+  const titleCards = taskTitles.map(
     (title: string, index: number) => {
       const link = "#";
 

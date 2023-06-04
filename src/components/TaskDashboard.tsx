@@ -21,7 +21,7 @@ function TaskDashboard() {
       <div className="taskDashboard">
         <TitlesContext.Provider value={titles}>
           <SideBar activeTask={activeTaskId} setActiveTask={setActiveTask} />
-          <Task taskId={activeTaskId} />
+          <Task taskId={activeTaskId} taskTitle={titles[activeTaskId]}/>
         </TitlesContext.Provider>
       </div>
     );
