@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useEffect, useState } from "react";
-import { Username, Password, Token } from "../helpers/validation";
+import { Username, Password, Token } from "../../helpers/validation";
 
 const fetchAndSetToken = (username: Username, password: Password) => {
   // TODO - from API + token validation

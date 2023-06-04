@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import TaskDashboard from "./TaskDashboard";
-import AuthProvider from "./AuthProvider";
+import AuthProvider from "./contexts/AuthProvider";
 import Register from "./Register";
 import Login from "./Login";
 

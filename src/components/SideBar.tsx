@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import TitlesContext from "./TitlesContext";
+import TitlesContext from "./contexts/TitlesContext";
 import Card from "./Card";
 
 import "../styles/SideBar.css";

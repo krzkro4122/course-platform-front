@@ -11,7 +11,7 @@ import {
   LastName,
 } from "../helpers/validation";
 import "../styles/Auth.css";
-import { AuthContext } from "./AuthProvider";
+import { AuthContext } from "./contexts/AuthProvider";
 import { Link, Navigate } from "react-router-dom";
 
 function register() {

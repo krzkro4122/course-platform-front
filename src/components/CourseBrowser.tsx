@@ -2,14 +2,15 @@ import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 import TitlesContext from "./contexts/TitlesContext";
+import CourseContext from "./contexts/CourseContext";
 import { AuthContext } from "./contexts/AuthProvider";
 import SideBar from "./SideBar";
 import Task from "./Task";
 
 import "../styles/TaskDashboard.css";
 
-function TaskDashboard() {
-  const titles = useContext(TitlesContext);
+function CourseBrowser() {
+  const courses = useContext(CourseContext);
   const [activeTaskId, setActiveTask] = useState(0);
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -19,7 +20,7 @@ function TaskDashboard() {
   } else {
     return (
       <div className="taskDashboard">
-        <TitlesContext.Provider value={titles}>
+        <TitlesContext.Provider value={courses}>
           <SideBar activeTask={activeTaskId} setActiveTask={setActiveTask} />
           <Task taskId={activeTaskId} />
         </TitlesContext.Provider>
@@ -28,4 +29,4 @@ function TaskDashboard() {
   }
 }
 
-export default TaskDashboard;
+export default CourseBrowser;
