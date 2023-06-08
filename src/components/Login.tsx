@@ -8,7 +8,7 @@ import {
 } from "../helpers/validation";
 import "../styles/Auth.css";
 import { Link, Navigate } from "react-router-dom";
-import { AuthContext } from "./contexts/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 
 function Login() {
   const [username, setUsername] = useState<Username>();

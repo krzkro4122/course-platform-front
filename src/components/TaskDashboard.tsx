@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 
-import TitlesContext from "./contexts/TitlesContext";
-import { AuthContext } from "./contexts/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import SideBar from "./SideBar";
 import Task from "./Task";
 
 import "../styles/TaskDashboard.css";
+import { fetchTasks } from "../helpers/fetchers";
 
 function TaskDashboard() {
-  const titles = useContext(TitlesContext);
-  const [activeTaskId, setActiveTask] = useState(0);
+  const tasks = fetchTasks();
+  const [activeTaskIndex, setActiveTask] = useState(0);
   const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
@@ -19,10 +19,8 @@ function TaskDashboard() {
   } else {
     return (
       <div className="taskDashboard">
-        <TitlesContext.Provider value={titles}>
-          <SideBar activeTask={activeTaskId} setActiveTask={setActiveTask} />
-          <Task taskId={activeTaskId} taskTitle={titles[activeTaskId]}/>
-        </TitlesContext.Provider>
+          <SideBar activeTask={activeTaskIndex} setActiveTask={setActiveTask} />
+          <Task taskContent={tasks[activeTaskIndex]} />
       </div>
     );
   }

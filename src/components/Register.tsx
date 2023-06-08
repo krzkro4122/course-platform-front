@@ -11,7 +11,7 @@ import {
   LastName,
 } from "../helpers/validation";
 import "../styles/Auth.css";
-import { AuthContext } from "./contexts/AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import { Link, Navigate } from "react-router-dom";
 
 function register() {
@@ -26,8 +26,11 @@ function register() {
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { isAuthenticated, setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
-
+  const {
+    isAuthenticated,
+    setIsAuthenticated,
+    fetchAndSetToken
+  } = useContext(AuthContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));

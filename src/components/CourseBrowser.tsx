@@ -1,24 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
-import CourseContext from "./contexts/CourseContext";
-import { AuthContext } from "./contexts/AuthProvider";
-
-import "../styles/TaskDashboard.css";
+import { AuthContext } from "./AuthProvider";
+import { fetchCourses } from "../helpers/fetchers";
 
 function CourseBrowser() {
-  const courses = useContext(CourseContext);
+  const courses = fetchCourses();
   const { isAuthenticated } = useContext(AuthContext);
-
   if (!isAuthenticated) {
     console.log("Navigating to /login...");
     return <Navigate replace to="/login" />;
   } else {
     return (
       <div className="courseBrowser">
-        <CourseContext.Provider value={courses}>
-            I like men
-        </CourseContext.Provider>
+        I like men
       </div>
     );
   }
