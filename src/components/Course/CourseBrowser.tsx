@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
-import { fetchCourses, fetchLeague } from "../../helpers/fetchers";
-import { useGuard } from "../Authentication/useAuth";
+import { fetchCourses, fetchLeague } from "helpers/fetchers";
+import { useGuard } from "components/Authentication/useAuth";
 import CourseCard from "./CourseCard";
 
 function CourseBrowser() {

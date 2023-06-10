@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Course } from "../../helpers/types";
+import { Course } from "helpers/types";
 
 interface courseInfo {
   course: Course;

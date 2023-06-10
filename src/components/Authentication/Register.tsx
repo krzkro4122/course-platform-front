@@ -10,11 +10,11 @@ import {
   Password,
   FirstName,
   LastName,
-} from "../../helpers/validation";
+} from "helpers/validation";
 import { AuthContext } from "./AuthProvider";
 import { usePermit } from "./useAuth";
 
-import "../../styles/Auth.css";
+import "styles/Auth.css";
 
 function register() {
   const [username, setUsername] = useState<Username>();

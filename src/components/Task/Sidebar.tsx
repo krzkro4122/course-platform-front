@@ -1,7 +1,7 @@
 import SidebarCard from "./SidebarCard";
-import { fetchTasks } from "../../helpers/fetchers";
+import { fetchTasks } from "helpers/fetchers";
 
-import "../../styles/SideBar.css";
+import "styles/Sidebar.css";
 
 interface ISideBarInfo {
   activeTask: number;

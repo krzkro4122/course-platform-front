@@ -7,8 +7,6 @@ import TaskDashboard from "./Task/TaskDashboard";
 import Register from "./Authentication/Register";
 import Login from "./Authentication/Login";
 
-import "../styles/App.css";
-
 function App() {
   return (
     <div className="App">

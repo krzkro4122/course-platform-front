@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Username, Password } from "../../helpers/validation";
+import { Username, Password } from "helpers/validation";
 
 const fetchAndSetToken = (username: Username, password: Password) => {
   // TODO - from API + token validation
