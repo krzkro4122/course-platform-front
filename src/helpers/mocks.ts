@@ -27,7 +27,7 @@ export const TASKS: Task[] = [
         answers: [
             {
                 text: "In a small shed behind the bridge",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "Kentucky, Arizona",
@@ -35,7 +35,7 @@ export const TASKS: Task[] = [
             },
             {
                 text: "Washingballs???",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -69,11 +69,11 @@ export const TASKS: Task[] = [
             },
             {
                 text: "He is ---> 🚶‍♂️",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "George Washinballs",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -88,11 +88,11 @@ export const TASKS: Task[] = [
             },
             {
                 text: "Yes (firmly)",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "Ye-, yeah (shivering)",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -103,7 +103,7 @@ export const TASKS: Task[] = [
         answers: [
             {
                 text: "They shed a lot of tears",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "Idk, i am not a zoologist",
@@ -111,7 +111,7 @@ export const TASKS: Task[] = [
             },
             {
                 text: "I just hope they're happy",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -141,7 +141,7 @@ export const TASKS: Task[] = [
         answers: [
             {
                 text: "Probably",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "I hope this isn't a math question",
@@ -149,7 +149,7 @@ export const TASKS: Task[] = [
             },
             {
                 text: "I have no mind of my own",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -183,11 +183,11 @@ export const TASKS: Task[] = [
             },
             {
                 text: "Chill, these are just mock questions",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "I really shouldn't be the one doing this...",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -202,11 +202,11 @@ export const TASKS: Task[] = [
             },
             {
                 text: "It was trying to abolish its own falsehoods",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "It's going to LIDL",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     },
@@ -217,7 +217,7 @@ export const TASKS: Task[] = [
         answers: [
             {
                 text: "I sure hope so",
-                isCorrect: false
+                isCorrect: true
             },
             {
                 text: "I reckon that those will not be seen. If you do see this question please tell me",
@@ -225,7 +225,7 @@ export const TASKS: Task[] = [
             },
             {
                 text: "WASHINGBALLS!!!",
-                isCorrect: true
+                isCorrect: false
             }
         ]
     }
@@ -235,37 +235,37 @@ export const COURSES: Course[] = [
     {
         id: "1",
         title: "Kurzgesagt",
-        taskIds: ["1", "2", "3"],
+        taskIds: ["2", "3", "1", "1", "1", "1", "1", "1"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqOibtncbyNaJVeUjVotNRl0r00hkiUfYEEv5XmNdw=s900-c-k-c0x00ffffff-no-rj"
     },
     {
         id: "2",
         title: "Vsauce",
-        taskIds: ["1", "3", "4"],
+        taskIds: ["3", "4", "1"],
         imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSROGg8l8rAK_TyIhzUHVBzkJtxzgHq0cc6rA&usqp=CAU",
     },
     {
         id: "3",
         title: "Veritasium",
-        taskIds: ["1", "5", "6"],
+        taskIds: ["5", "6", "1"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqPviJ3x9GiSEuQhWNKNipzDMOXrJ0Ll51xR5osXMw=s900-c-k-c0x00ffffff-no-rj",
     },
     {
         id: "4",
         title: "Fireship",
-        taskIds: ["1", "7", "8"],
+        taskIds: ["7", "8", "1"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqOSWK9LIZ9xGvDbBZ7gjBK1ayNCxK0jKMOq1FirfA=s900-c-k-c0x00ffffff-no-rj",
     },
     {
         id: "5",
         title: "Pasja Informatyki",
-        taskIds: ["1", "9", "10"],
+        taskIds: ["9", "10", "1"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqOpZQrvexqYG2I9eBetWZIsAVmp_VKxroi9cBebNA=s900-c-k-c0x00ffffff-no-rj",
     },
     {
         id: "6",
         title: "3Blue1Brown",
-        taskIds: ["1", "11", "12"],
+        taskIds: ["11", "12", "1"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqOpvSaBjyydwPBNxyB_sckPMQj09C89VqRBsgmhtg=s900-c-k-c0x00ffffff-no-rj",
     }
 ];
