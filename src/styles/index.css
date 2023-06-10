@@ -38,7 +38,23 @@ body {
   width: 100vw;
   height: 100vh;
   /* Super Fancy! */
-  /* overflow: hidden; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+
+}
+
+body::-webkit-scrollbar-thumb {
+  width: 1rem;
+  background: black;
+  background: var(--accent-color);
 
 }
 

@@ -1,4 +1,4 @@
-import "styles/SidebarCard.css";
+import "styles/Card.css";
 
 interface ICardInfo {
   cardTitle: string;

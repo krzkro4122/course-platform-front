@@ -8,13 +8,14 @@ interface leagueInfo {
 
 function LeagueCard({ league }: leagueInfo) {
   return (
-    <li>
+    <li className="browserCard">
       <Link to={`league/${league.id}/courses`}>
         <img
+          className="browserCardImage"
           src={league.imageSrc}
           alt={`Image of the ${league.type} league.`}
         />
-        <h1>{league.type}</h1>
+        <h1 className="browserCardLabel">{league.type}</h1>
       </Link>
     </li>
   );
