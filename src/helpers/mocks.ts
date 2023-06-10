@@ -11,76 +11,57 @@ export const TASKS: Task[] = [
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "He is -> 🚶‍♂️",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
-                isCorrect: true
-            }
-        ]
-    },
-    {
-        id: "1",
-        index: 0,
-        question: "Who is Ligma?",
-        answers: [
-            {
-                text: "I am.",
-                isCorrect: false
-            },
-            {
-                text: "He is ---> 🚶‍♂️",
-                isCorrect: false
-            },
-            {
-                text: "George Washinballs",
+                text: "George Washingballs",
                 isCorrect: true
             }
         ]
     },
     {
         id: "2",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 1,
+        question: "Where does Hugh Mongoose live?",
         answers: [
             {
-                text: "I am.",
+                text: "In a small shed behind the bridge",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Kentucky, Arizona",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "Washingballs???",
                 isCorrect: true
             }
         ]
     },
     {
         id: "3",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 2,
+        question: "Do stormtroopers poop?",
         answers: [
             {
-                text: "I am.",
+                text: "Maybe once a day",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "It's in the name, duh",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "I can't stop washingballs",
                 isCorrect: true
             }
         ]
     },
     {
         id: "4",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 3,
+        question: "Is Alan Walker really walking?",
         answers: [
             {
                 text: "I am.",
@@ -98,152 +79,152 @@ export const TASKS: Task[] = [
     },
     {
         id: "5",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 4,
+        question: "Is this a question?",
         answers: [
             {
-                text: "I am.",
+                text: "That depends...",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Yes (firmly)",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "Ye-, yeah (shivering)",
                 isCorrect: true
             }
         ]
     },
     {
         id: "6",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 5,
+        question: "Do dishwashers cry during a washing cycle?",
         answers: [
             {
-                text: "I am.",
+                text: "They shed a lot of tears",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Idk, i am not a zoologist",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "I just hope they're happy",
                 isCorrect: true
             }
         ]
     },
     {
         id: "7",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 6,
+        question: "Given three answers, which one is correct?",
         answers: [
             {
-                text: "I am.",
+                text: "The third answer",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Me",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "I really, reaaaaally like cats",
                 isCorrect: true
             }
         ]
     },
     {
         id: "8",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 7,
+        question: "Would you mind?",
         answers: [
             {
-                text: "I am.",
+                text: "Probably",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "I hope this isn't a math question",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "I have no mind of my own",
                 isCorrect: true
             }
         ]
     },
     {
         id: "9",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 8,
+        question: "Who invented racism?",
         answers: [
             {
-                text: "I am.",
+                text: "MGK",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Definitely not Eminem",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "Perhaps it was Eminem",
                 isCorrect: true
             }
         ]
     },
     {
         id: "10",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 9,
+        question: "Did any1 even read this?",
         answers: [
             {
-                text: "I am.",
+                text: "Probably not",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Chill, these are just mock questions",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "I really shouldn't be the one doing this...",
                 isCorrect: true
             }
         ]
     },
     {
         id: "11",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 10,
+        question: "Why did the chicken cross the road?",
         answers: [
             {
-                text: "I am.",
+                text: "That rhymes with toad!",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "It was trying to abolish its own falsehoods",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "It's going to LIDL",
                 isCorrect: true
             }
         ]
     },
     {
         id: "12",
-        index: 0,
-        question: "Who is Ligma?",
+        index: 11,
+        question: "Is this the final question?",
         answers: [
             {
-                text: "I am.",
+                text: "I sure hope so",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "I reckon that those will not be seen. If you do see this question please tell me",
                 isCorrect: false
             },
             {
-                text: "George Washinballs",
+                text: "WASHINGBALLS!!!",
                 isCorrect: true
             }
         ]

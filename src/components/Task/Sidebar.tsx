@@ -1,22 +1,30 @@
 import SidebarCard from "./SidebarCard";
-import { fetchTasks } from "helpers/fetchers";
+import Task from "./Task";
 
 import "styles/Sidebar.css";
 
-interface ISideBarInfo {
-  activeTask: number;
-  setActiveTask: (index: number) => void;
+export interface SidebarProps {
+  activeTaskIndex: number;
+  setActiveTaskIndex: (index: number) => void;
+  tasks: Task[];
 }
 
-const Sidebar = ({ activeTask, setActiveTask }: ISideBarInfo) => {
+const Sidebar = ({
+  setActiveTaskIndex,
+  activeTaskIndex,
+  tasks,
+}: SidebarProps) => {
   const updateActive = (index: number) => {
-    setActiveTask(index);
+    setActiveTaskIndex(index);
   };
-  const questions = fetchTasks().map((task) => task.question);
+  console.log(tasks);
+  console.log(activeTaskIndex);
+  console.log(setActiveTaskIndex);
+
+  const questions = tasks.map((task) => task.question);
   const questionCards = questions.map((title: string, index: number) => {
     const link = "#";
-
-    return activeTask == index ? (
+    return activeTaskIndex == index ? (
       <SidebarCard
         key={index}
         onClick={updateActive}

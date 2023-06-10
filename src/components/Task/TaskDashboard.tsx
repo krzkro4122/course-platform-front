@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { fetchCourse, fetchTasks } from "helpers/fetchers";
 import { useGuard } from "components/Authentication/useAuth";
-import Sidebar from "./Sidebar";
+import Sidebar, { SidebarProps } from "./Sidebar";
 import Task from "./Task";
 
 import "styles/TaskDashboard.css";
@@ -14,11 +14,15 @@ function TaskDashboard() {
   const tasks = fetchTasks().filter((task) => {
     return course!.taskIds.includes(task.id);
   });
-  const [activeTaskIndex, setActiveTask] = useState(0);
-
+  const [activeTaskIndex, setActiveTaskIndex] = useState(0);
+  const sibebarProps: SidebarProps = {
+    activeTaskIndex: activeTaskIndex,
+    setActiveTaskIndex: setActiveTaskIndex,
+    tasks: tasks,
+  };
   return useGuard(
     <div className="taskDashboard">
-      <Sidebar activeTask={activeTaskIndex} setActiveTask={setActiveTask} />
+      <Sidebar {...sibebarProps} />
       <Task task={tasks[activeTaskIndex]} />
     </div>
   );

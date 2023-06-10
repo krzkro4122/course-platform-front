@@ -1,7 +1,7 @@
 import { TASKS, COURSES, LEAGUES } from "./mocks";
 
 export const fetchTasks = () => {
-    return TASKS
+    return TASKS;
 }
 
 export const fetchCourses = () => {
