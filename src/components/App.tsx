@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import CourseBrowser from "./CourseBrowser";
-import LeagueBrowser from "./LeagueBrowser";
-import TaskDashboard from "./TaskDashboard";
-import AuthProvider from "./AuthProvider";
-import Register from "./Register";
-import Login from "./Login";
+import AuthProvider from "./Authentication/AuthProvider";
+import CourseBrowser from "./Course/CourseBrowser";
+import LeagueBrowser from "./League/LeagueBrowser";
+import TaskDashboard from "./Task/TaskDashboard";
+import Register from "./Authentication/Register";
+import Login from "./Authentication/Login";
 
 import "../styles/App.css";
 

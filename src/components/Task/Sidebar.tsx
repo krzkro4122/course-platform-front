@@ -1,9 +1,7 @@
-import { useContext } from "react";
-
 import SidebarCard from "./SidebarCard";
+import { fetchTasks } from "../../helpers/fetchers";
 
-import "../styles/SideBar.css";
-import { fetchTasks } from "../helpers/fetchers";
+import "../../styles/SideBar.css";
 
 interface ISideBarInfo {
   activeTask: number;

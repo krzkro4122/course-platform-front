@@ -1,6 +1,6 @@
-import { fetchLeagues } from "../helpers/fetchers";
+import { fetchLeagues } from "../../helpers/fetchers";
+import { useGuard } from "../Authentication/useAuth";
 import League from "./LeagueCard";
-import { useGuard } from "./useAuth";
 
 function LeagueBrowser() {
   const leagues = fetchLeagues();

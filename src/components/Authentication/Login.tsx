@@ -1,15 +1,16 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   validatePassword,
   validateUsername,
   Username,
   Password,
-} from "../helpers/validation";
-import "../styles/Auth.css";
-import { Link } from "react-router-dom";
+} from "../../helpers/validation";
 import { AuthContext } from "./AuthProvider";
 import { usePermit } from "./useAuth";
+
+import "../../styles/Auth.css";
 
 function Login() {
   const [username, setUsername] = useState<Username>();
@@ -17,8 +18,7 @@ function Login() {
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { setIsAuthenticated, fetchAndSetToken } =
-    useContext(AuthContext);
+  const { setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));

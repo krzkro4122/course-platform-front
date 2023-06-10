@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { League } from "../helpers/types";
+
+import { League } from "../../helpers/types";
 
 interface leagueInfo {
   league: League;

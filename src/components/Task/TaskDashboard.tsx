@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { fetchCourse, fetchTasks } from "../helpers/fetchers";
-import { useGuard } from "./useAuth";
+import { fetchCourse, fetchTasks } from "../../helpers/fetchers";
+import { useGuard } from "../Authentication/useAuth";
 import Sidebar from "./Sidebar";
 import Task from "./Task";
 
-import "../styles/TaskDashboard.css";
+import "../../styles/TaskDashboard.css";
 
 function TaskDashboard() {
   const { id } = useParams();

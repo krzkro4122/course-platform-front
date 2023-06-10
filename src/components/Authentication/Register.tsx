@@ -1,4 +1,5 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   validatePassword,
@@ -9,11 +10,11 @@ import {
   Password,
   FirstName,
   LastName,
-} from "../helpers/validation";
-import "../styles/Auth.css";
+} from "../../helpers/validation";
 import { AuthContext } from "./AuthProvider";
-import { Link } from "react-router-dom";
 import { usePermit } from "./useAuth";
+
+import "../../styles/Auth.css";
 
 function register() {
   const [username, setUsername] = useState<Username>();
@@ -27,8 +28,7 @@ function register() {
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { setIsAuthenticated, fetchAndSetToken } =
-    useContext(AuthContext);
+  const { setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));

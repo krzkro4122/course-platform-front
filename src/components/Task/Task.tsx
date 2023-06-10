@@ -1,6 +1,6 @@
-import { Task } from "../helpers/types";
+import { Task } from "../../helpers/types";
 
-import "../styles/Task.css";
+import "../../styles/Task.css";
 
 interface TaskInfo {
   task: Task;
