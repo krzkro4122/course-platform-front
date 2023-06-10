@@ -7,8 +7,9 @@ import {
   Password,
 } from "../helpers/validation";
 import "../styles/Auth.css";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { usePermit } from "./useAuth";
 
 function Login() {
   const [username, setUsername] = useState<Username>();
@@ -16,7 +17,8 @@ function Login() {
   const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { isAuthenticated, setIsAuthenticated, fetchAndSetToken } = useContext(AuthContext);
+  const { setIsAuthenticated, fetchAndSetToken } =
+    useContext(AuthContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
@@ -34,50 +36,45 @@ function Login() {
     fetchAndSetToken(username, password);
     setIsAuthenticated(true);
   }
-
-  if (isAuthenticated) {
-    console.log("Navigating to /...");
-    return <Navigate replace to="/" />;
-  } else {
-    return (
-      <div className="page">
-        <div className="formContainer">
-          <h1>Welcome! 👋🏻</h1>
-          <form className="form" onSubmit={handleSubmit}>
-            <label>
-              <input
-                type="text"
-                placeholder="Username"
-                onChange={(event) => setUsername(event.target.value)}
-                className={
-                  (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-                autoFocus
-              />
-            </label>
-            <label>
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(event) => setPassword(event.target.value)}
-                className={
-                  (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-              />
-            </label>
-            <div className="buttons">
-              <button id="submit" className="button" type="submit">
-                Log in
-              </button>
-              <Link id="re-route" className="button" to="/register">
-                Register
-              </Link>
-            </div>
-          </form>
-        </div>
+  return usePermit(
+    <div className="page">
+      <div className="formContainer">
+        <h1>Welcome! 👋🏻</h1>
+        <form className="form" onSubmit={handleSubmit}>
+          <label>
+            <input
+              type="text"
+              placeholder="Username"
+              onChange={(event) => setUsername(event.target.value)}
+              className={
+                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+              autoFocus
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+              className={
+                (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+            />
+          </label>
+          <div className="buttons">
+            <button id="submit" className="button" type="submit">
+              Log in
+            </button>
+            <Link id="re-route" className="button" to="/register">
+              Register
+            </Link>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>,
+    "/"
+  );
 }
 
 export default Login;

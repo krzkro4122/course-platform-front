@@ -11,7 +11,8 @@ export type Task = {
 export type Course = {
     id: string,
     title: string,
-    taskIds: string[]
+    taskIds: string[],
+    imageSrc: string
 };
 
 export enum LeagueType {
@@ -20,11 +21,15 @@ export enum LeagueType {
     STEEL = "steel",
     ELECTRIC = "electric",
     GRASS = "grass",
-    ROCK = "rock"
+    ROCK = "rock",
+    GHOST = "ghost",
+    FIRE = "fire",
+    BUG = "bug"
 }
 
 export type League = {
     id: string,
-    type: LeagueType
+    type: LeagueType,
+    imageSrc: string,
     courseIds: string[]
 };

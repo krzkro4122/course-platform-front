@@ -1,29 +1,27 @@
-import { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { AuthContext } from "./AuthProvider";
-import SideBar from "./SideBar";
+import { fetchCourse, fetchTasks } from "../helpers/fetchers";
+import { useGuard } from "./useAuth";
+import Sidebar from "./Sidebar";
 import Task from "./Task";
 
 import "../styles/TaskDashboard.css";
-import { fetchTasks } from "../helpers/fetchers";
 
 function TaskDashboard() {
-  const tasks = fetchTasks();
+  const { id } = useParams();
+  const course = fetchCourse(id!);
+  const tasks = fetchTasks().filter((task) => {
+    return course!.taskIds.includes(task.id);
+  });
   const [activeTaskIndex, setActiveTask] = useState(0);
-  const { isAuthenticated } = useContext(AuthContext);
 
-  if (!isAuthenticated) {
-    console.log("Navigating to /login...");
-    return <Navigate replace to="/login" />;
-  } else {
-    return (
-      <div className="taskDashboard">
-          <SideBar activeTask={activeTaskIndex} setActiveTask={setActiveTask} />
-          <Task taskContent={tasks[activeTaskIndex]} />
-      </div>
-    );
-  }
+  return useGuard(
+    <div className="taskDashboard">
+      <Sidebar activeTask={activeTaskIndex} setActiveTask={setActiveTask} />
+      <Task task={tasks[activeTaskIndex]} />
+    </div>
+  );
 }
 
 export default TaskDashboard;

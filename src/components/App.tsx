@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import CourseBrowser from "./CourseBrowser";
+import LeagueBrowser from "./LeagueBrowser";
+import TaskDashboard from "./TaskDashboard";
 import AuthProvider from "./AuthProvider";
 import Register from "./Register";
 import Login from "./Login";
 
 import "../styles/App.css";
-import CourseBrowser from "./CourseBrowser";
 
 function App() {
   return (
@@ -13,9 +15,11 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route index element={<CourseBrowser />} />
+            <Route index path="/" element={<LeagueBrowser />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/league/:id/courses" element={<CourseBrowser />} />
+            <Route path="/course/:id/tasks" element={<TaskDashboard />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

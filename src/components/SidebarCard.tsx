@@ -9,10 +9,19 @@ interface ICardInfo {
   onClick: (index: number) => void;
 }
 
-function Card({ cardTitle, link, className, onClick, index }: ICardInfo) {
+function SidebarCard({
+  cardTitle,
+  link,
+  className,
+  onClick,
+  index,
+}: ICardInfo) {
   return (
     <div className="card">
-      <div onClick={() => onClick(index)} className={"cardContainer " + className}>
+      <div
+        onClick={() => onClick(index)}
+        className={"cardContainer " + className}
+      >
         <a href={link} className="cardText">
           {cardTitle}
         </a>
@@ -21,4 +30,4 @@ function Card({ cardTitle, link, className, onClick, index }: ICardInfo) {
   );
 }
 
-export default Card;
+export default SidebarCard;

@@ -6,16 +6,15 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Username, Password, Token } from "../helpers/validation";
+import { Username, Password } from "../helpers/validation";
 
 const fetchAndSetToken = (username: Username, password: Password) => {
   // TODO - from API + token validation
-  const token: Token = "";
+  // const token: Token = "";
   const tokenIsValid = true;
 
   if (tokenIsValid) {
     localStorage.setItem("authenticated", "true");
-    localStorage.setItem("token", token);
   }
 };
 
@@ -41,7 +40,11 @@ const AuthProvider = ({ children }: AuthProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, fetchAndSetToken }}
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        fetchAndSetToken,
+      }}
     >
       {children}
     </AuthContext.Provider>

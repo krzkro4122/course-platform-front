@@ -12,7 +12,8 @@ import {
 } from "../helpers/validation";
 import "../styles/Auth.css";
 import { AuthContext } from "./AuthProvider";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { usePermit } from "./useAuth";
 
 function register() {
   const [username, setUsername] = useState<Username>();
@@ -26,11 +27,8 @@ function register() {
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const {
-    isAuthenticated,
-    setIsAuthenticated,
-    fetchAndSetToken
-  } = useContext(AuthContext);
+  const { setIsAuthenticated, fetchAndSetToken } =
+    useContext(AuthContext);
 
   useEffect(() => {
     setUsernameIsLegal(validateUsername(username));
@@ -52,81 +50,77 @@ function register() {
     setIsAuthenticated(true);
   }
 
-  if (isAuthenticated) {
-    console.log("Navigating to /...");
-    return <Navigate replace to="/" />;
-  } else {
-    return (
-      <div className="page">
-        <div className="formContainer">
-          <h1>Register 📝</h1>
-          <form className="form" onSubmit={handleSubmit}>
-            <label>
-              <input
-                type="text"
-                placeholder="Username / E-mail"
-                onChange={(event) => setUsername(event.target.value)}
-                className={
-                  (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-                autoFocus
-              />
-            </label>
-            <label>
-              <input
-                type="text"
-                placeholder="First Name"
-                onChange={(event) => setFirstName(event.target.value)}
-                className={
-                  (!firstNameIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-                autoFocus
-              />
-            </label>
-            <label>
-              <input
-                type="text"
-                placeholder="Last Name"
-                onChange={(event) => setLastName(event.target.value)}
-                className={
-                  (!lastNameIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-                autoFocus
-              />
-            </label>
-            <label>
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(event) => setPassword(event.target.value)}
-                className={
-                  (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
-                }
-              />
-            </label>
-            <label>
-              <input
-                type="password"
-                placeholder="Password (Repeat)"
-                onChange={(event) => setPasswordRepeat(event.target.value)}
-                className={
-                  (!passwordsMatch && isSubmitted ? "invalid" : "") + " input"
-                }
-              />
-            </label>
-            <div className="buttons">
-              <button id="submit" className="button" type="submit">
-                Sign up
-              </button>
-              <Link id="re-route" className="button" to="/login">
-                Cancel
-              </Link>
-            </div>
-          </form>
-        </div>
+  return usePermit(
+    <div className="page">
+      <div className="formContainer">
+        <h1>Register 📝</h1>
+        <form className="form" onSubmit={handleSubmit}>
+          <label>
+            <input
+              type="text"
+              placeholder="Username / E-mail"
+              onChange={(event) => setUsername(event.target.value)}
+              className={
+                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+              autoFocus
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              placeholder="First Name"
+              onChange={(event) => setFirstName(event.target.value)}
+              className={
+                (!firstNameIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+              autoFocus
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              placeholder="Last Name"
+              onChange={(event) => setLastName(event.target.value)}
+              className={
+                (!lastNameIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+              autoFocus
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(event) => setPassword(event.target.value)}
+              className={
+                (!passwordIsLegal && isSubmitted ? "invalid" : "") + " input"
+              }
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              placeholder="Password (Repeat)"
+              onChange={(event) => setPasswordRepeat(event.target.value)}
+              className={
+                (!passwordsMatch && isSubmitted ? "invalid" : "") + " input"
+              }
+            />
+          </label>
+          <div className="buttons">
+            <button id="submit" className="button" type="submit">
+              Sign up
+            </button>
+            <Link id="re-route" className="button" to="/login">
+              Cancel
+            </Link>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>,
+    "/"
+  );
 }
 
 export default register;
