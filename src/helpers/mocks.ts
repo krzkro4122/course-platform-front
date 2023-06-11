@@ -274,18 +274,21 @@ export const LEAGUES: League[] = [
     {
         id: "1",
         type: LeagueType.FIRE,
+        color: "#ec8364",
         imageSrc: "https://archives.bulbagarden.net/media/upload/e/e5/FireIC_NPSnap.png",
         courseIds: ["1", "2", "3", "6"]
     },
     {
         id: "2",
         type: LeagueType.BUG,
+        color: "#bcd35c",
         imageSrc: "https://archives.bulbagarden.net/media/upload/e/e1/BugIC_NPSnap.png",
         courseIds: ["4"]
     },
     {
         id: "3",
         type: LeagueType.GHOST,
+        color: "#a4abdb",
         imageSrc: "https://archives.bulbagarden.net/media/upload/7/7a/GhostIC_NPSnap.png",
         courseIds: ["5"]
     }

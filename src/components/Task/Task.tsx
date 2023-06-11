@@ -1,21 +1,34 @@
 import { Task } from "helpers/types";
-
-import "styles/Task.css";
+import { useState } from "react";
 
 interface TaskInfo {
   task: Task;
+  localIndex: number;
 }
 
-function Task({ task }: TaskInfo) {
+function Task({ task, localIndex }: TaskInfo) {
+  const [pickedIndex, setPickedIndex] = useState<number | null>(null);
+  const markAsPicked = (pi: number) => {
+    setPickedIndex(pi);
+  };
   const { id, index, question, answers } = task;
   const answersFormatted = answers.map((answer, index) => {
     return (
-      <div key={index}>
-        <input type="radio" id={id} name="answer" value={answer.text}></input>
-        <label htmlFor={id}>
-          <h4>{answer.text}</h4>
-        </label>
-      </div>
+      <label
+        htmlFor={index.toString()}
+        onClick={() => markAsPicked(index)}
+        className={"answer " + (pickedIndex === index ? "picked" : "")}
+        key={index}
+      >
+        <input
+          type="radio"
+          className="radio"
+          id={index.toString()}
+          name="answer"
+          value={answer.text}
+        ></input>
+        <h4>{answer.text}</h4>
+      </label>
     );
   });
   return (
@@ -24,11 +37,15 @@ function Task({ task }: TaskInfo) {
         <fieldset>
           <legend>
             <h2>
-              {index + 1}. {question}
+              {localIndex + 1}. {question}
             </h2>
           </legend>
-          <div>{answersFormatted}</div>
-          <button type="submit">Check</button>
+          <div id="answers">{answersFormatted}</div>
+          <div id="checkContainer">
+            <button type="submit" id="check">
+              Check
+            </button>
+          </div>
         </fieldset>
       </form>
     </div>

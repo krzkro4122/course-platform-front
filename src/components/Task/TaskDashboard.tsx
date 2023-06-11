@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { fetchCourse, fetchTasks } from "helpers/fetchers";
 import { useGuard } from "components/Authentication/useAuth";
+import { fetchCourse, fetchTasks } from "helpers/fetchers";
 import Sidebar, { SidebarProps } from "./Sidebar";
 import Task from "./Task";
 
@@ -23,7 +23,7 @@ function TaskDashboard() {
   return useGuard(
     <div className="taskDashboard">
       <Sidebar {...sibebarProps} />
-      <Task task={tasks[activeTaskIndex]} />
+      <Task task={tasks[activeTaskIndex]} localIndex={activeTaskIndex} />
     </div>
   );
 }

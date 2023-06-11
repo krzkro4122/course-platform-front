@@ -8,7 +8,12 @@ interface courseInfo {
 
 function CourseCard({ course }: courseInfo) {
   return (
-    <li className="browserCard">
+    <li
+      className="browserCard"
+      style={{
+        border: `solid 0.2rem var(--accent-color)`,
+      }}
+    >
       <Link to={`/course/${course.id}/tasks`}>
         <img
           className="browserCardImage"

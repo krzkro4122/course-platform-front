@@ -17,9 +17,6 @@ const Sidebar = ({
   const updateActive = (index: number) => {
     setActiveTaskIndex(index);
   };
-  console.log(tasks);
-  console.log(activeTaskIndex);
-  console.log(setActiveTaskIndex);
 
   const questions = tasks.map((task) => task.question);
   const questionCards = questions.map((title: string, index: number) => {

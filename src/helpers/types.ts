@@ -30,6 +30,7 @@ export enum LeagueType {
 export type League = {
     id: string,
     type: LeagueType,
+    color: string,
     imageSrc: string,
     courseIds: string[]
 };

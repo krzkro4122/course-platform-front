@@ -10,7 +10,6 @@
     padding: 1rem;
     background-color: var(--bg-darker);
     border-radius: 0.8rem;
-    border: solid 0.2rem var(--accent-color);
 
     width: 18rem;
     aspect-ratio: 1 / 1.4;
@@ -22,7 +21,7 @@
     overflow: hidden;
 }
 
-.browserCard > a {
+.browserCard>a {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -32,7 +31,6 @@
     text-align: center;
     padding-bottom: 0.5rem;
 }
-
 
 .browserCardImage {
     width: 18rem;
