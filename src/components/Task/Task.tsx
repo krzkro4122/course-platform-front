@@ -1,5 +1,5 @@
 import { Task } from "helpers/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TaskInfo {
   task: Task;
@@ -11,7 +11,30 @@ function Task({ task, localIndex }: TaskInfo) {
   const markAsPicked = (pi: number) => {
     setPickedIndex(pi);
   };
-  const { id, index, question, answers } = task;
+
+  useEffect(() => {
+    setPickedIndex(null);
+  }, [task]);
+
+  const checkAnswer = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const answers = task.answers;
+    const taskIndeces = [...Array(answers.length).keys()];
+
+    if (taskIndeces.includes(pickedIndex!)) {
+      if (answers.at(pickedIndex!)?.isCorrect) {
+        alert("Correct answer!");
+        return;
+      } else {
+        alert("Try again!");
+      }
+    } else {
+      alert("Nothing picked!");
+      return;
+    }
+  };
+  const { question, answers } = task;
   const answersFormatted = answers.map((answer, index) => {
     return (
       <label
@@ -33,7 +56,7 @@ function Task({ task, localIndex }: TaskInfo) {
   });
   return (
     <div className="task">
-      <form>
+      <form onSubmit={checkAnswer}>
         <fieldset>
           <legend>
             <h2>
