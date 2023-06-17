@@ -1,6 +1,5 @@
 export type Task = {
     id: string,
-    index: number,
     question: string,
     answers: {
         text: string,

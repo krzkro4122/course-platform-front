@@ -4,7 +4,7 @@ import { fetchCourses, fetchLeague } from "helpers/fetchers";
 import { useGuard } from "components/Authentication/useAuth";
 import CourseCard from "./CourseCard";
 
-import 'styles/Browser.css';
+import "styles/Browser.css";
 
 function CourseBrowser() {
   const { id } = useParams();

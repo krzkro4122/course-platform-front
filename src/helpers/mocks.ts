@@ -3,7 +3,6 @@ import { Task, Course, League, LeagueType } from './types';
 export const TASKS: Task[] = [
     {
         id: "1",
-        index: 0,
         question: "Who is Ligma?",
         answers: [
             {
@@ -22,7 +21,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "2",
-        index: 1,
         question: "Where does Hugh Mongoose live?",
         answers: [
             {
@@ -41,7 +39,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "3",
-        index: 2,
         question: "Do stormtroopers poop?",
         answers: [
             {
@@ -60,7 +57,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "4",
-        index: 3,
         question: "Is Alan Walker really walking?",
         answers: [
             {
@@ -79,7 +75,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "5",
-        index: 4,
         question: "Is this a question?",
         answers: [
             {
@@ -98,7 +93,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "6",
-        index: 5,
         question: "Do dishwashers cry during a washing cycle?",
         answers: [
             {
@@ -117,7 +111,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "7",
-        index: 6,
         question: "Given three answers, which one is correct?",
         answers: [
             {
@@ -136,7 +129,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "8",
-        index: 7,
         question: "Would you mind?",
         answers: [
             {
@@ -155,7 +147,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "9",
-        index: 8,
         question: "Who invented racism?",
         answers: [
             {
@@ -174,7 +165,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "10",
-        index: 9,
         question: "Did any1 even read this?",
         answers: [
             {
@@ -193,7 +183,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "11",
-        index: 10,
         question: "Why did the chicken cross the road?",
         answers: [
             {
@@ -212,7 +201,6 @@ export const TASKS: Task[] = [
     },
     {
         id: "12",
-        index: 11,
         question: "Is this the final question?",
         answers: [
             {
@@ -235,7 +223,7 @@ export const COURSES: Course[] = [
     {
         id: "1",
         title: "Kurzgesagt",
-        taskIds: ["2", "3", "1", "1", "1", "1", "1", "1"],
+        taskIds: ["1", "2", "3"],
         imageSrc: "https://yt3.googleusercontent.com/ytc/AGIKgqOibtncbyNaJVeUjVotNRl0r00hkiUfYEEv5XmNdw=s900-c-k-c0x00ffffff-no-rj"
     },
     {
