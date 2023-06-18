@@ -32,15 +32,10 @@
 }
 
 .log-out {
-    /* background-color: var(--accent-color); */
-    /* border: solid 0.1rem var(--accent-color); */
     border-radius: 0.5rem;
     font-size: x-large;
     color: var(--accent-color);
     width: 6rem;
-    padding-left: 0.5rem;
-    padding-top: 0.1rem;
-    padding-bottom: 2.4rem;
 }
 
 .log-out:hover {

@@ -1,4 +1,4 @@
-import { TASKS, COURSES, LEAGUES } from "./mocks";
+import { TASKS, COURSES, LEAGUES, USERS } from "./mocks";
 
 export const fetchTasks = () => {
     return TASKS;
@@ -18,4 +18,8 @@ export const fetchLeagues = () => {
 
 export const fetchLeague = (id: string) => {
     return fetchLeagues().find(league => league.id === id);
+};
+
+export const fetchUsers = () => {
+    return USERS;
 };

@@ -1,4 +1,4 @@
-import { Task, Course, League, LeagueType } from './types';
+import { Task, Course, League, LeagueType, User } from './types';
 
 export const TASKS: Task[] = [
     {
@@ -281,3 +281,36 @@ export const LEAGUES: League[] = [
         courseIds: ["5"]
     }
 ];
+
+export const USERS: User[] = [
+    {
+        id: "0",
+        leagueId: "1",
+        score: 69,
+        username: "Layor"
+    },
+    {
+        id: "1",
+        leagueId: "1",
+        score: 100,
+        username: "Ementan"
+    },
+    {
+        id: "2",
+        leagueId: "1",
+        score: 55,
+        username: "Dutch"
+    },
+    {
+        id: "3",
+        leagueId: "2",
+        score: 23,
+        username: "Derek"
+    },
+    {
+        id: "4",
+        leagueId: "3",
+        score: 501,
+        username: "Mark"
+    }
+]
