@@ -54,6 +54,7 @@
     background-color: var(--accent-color);
     color: var(--bg-dark-high-sat);
     font-weight: 500;
+    cursor: pointer;
 }
 
 #re-route {

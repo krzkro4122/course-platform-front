@@ -11,6 +11,12 @@
     display: flex;
     justify-content: space-around;
     place-content: center;
+    /* position: fixed; */
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 50%;
 }
 
 .userInfo {
@@ -26,11 +32,11 @@
 }
 
 .log-out {
-    background-color: var(--accent-color);
+    /* background-color: var(--accent-color); */
     /* border: solid 0.1rem var(--accent-color); */
     border-radius: 0.5rem;
     font-size: x-large;
-    color: var(--bg-darker);
+    color: var(--accent-color);
     width: 6rem;
     padding-left: 0.5rem;
     padding-top: 0.1rem;
@@ -40,6 +46,7 @@
 .log-out:hover {
     transform: scale(1.1);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .navigation {

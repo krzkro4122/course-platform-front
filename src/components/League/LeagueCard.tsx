@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import { League } from "helpers/types";
+import { AuthContext } from "components/Authentication/AuthProvider";
 
 interface leagueInfo {
   league: League;
 }
 
 function LeagueCard({ league }: leagueInfo) {
+  const { setLeague } = useContext(AuthContext);
 
   const setColor = () => {
-    document.documentElement.style.setProperty('--accent-color', league.color)
+    document.documentElement.style.setProperty("--accent-color", league.color);
+    document.documentElement.style.setProperty(
+      "--accent-color-low-sat",
+      league.color + "55"
+    );
+    setLeague(league.id);
   };
 
   return (
@@ -19,10 +27,7 @@ function LeagueCard({ league }: leagueInfo) {
         border: `solid 0.2rem ${league.color}`,
       }}
     >
-      <Link
-        to={`league/${league.id}/courses`}
-        onClick={() => setColor()}
-      >
+      <Link to={`league/${league.id}/courses`} onClick={() => setColor()}>
         <img
           className="browserCardImage"
           src={league.imageSrc}
@@ -33,7 +38,9 @@ function LeagueCard({ league }: leagueInfo) {
           style={{
             color: `${league.color}`,
           }}
-        >{league.type}</h1>
+        >
+          {league.type}
+        </h1>
       </Link>
     </li>
   );

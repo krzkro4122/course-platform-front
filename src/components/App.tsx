@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useContext, useState } from "react";
 
-import AuthProvider from "./Authentication/AuthProvider";
+import AuthProvider, { AuthContext } from "./Authentication/AuthProvider";
 import CourseBrowser from "./Course/CourseBrowser";
 import LeagueBrowser from "./League/LeagueBrowser";
 import TaskDashboard from "./Task/TaskDashboard";

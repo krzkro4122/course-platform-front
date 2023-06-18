@@ -48,6 +48,7 @@
 
 .answer:hover {
     transform: scale(1.02);
+    cursor: pointer;
 }
 
 .picked {
@@ -78,6 +79,7 @@
 
 #check:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 #check:active {

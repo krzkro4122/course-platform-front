@@ -1,27 +1,40 @@
 import { Link } from "react-router-dom";
 
+import { AuthContext } from "./Authentication/AuthProvider";
+import { useContext } from "react";
+
 import "styles/Header.css";
 
-function logOut() {
-  console.log("logging out...");
-}
-
 function Header() {
+  const { unsetUser, user } = useContext(AuthContext);
+
+  function logOut() {
+    console.log("logging out...");
+    unsetUser();
+  }
+
+  if (!user) {
+    return (<div></div>);
+  }
+
   return (
     <div className="header">
       <div className="userInfo">
-        <h2 className="username">Username</h2>
-        <h2 className="score">Score: 69</h2>
+        <h2 className="username">{user?.username}</h2>
+        <h2 className="score">Score: {user?.score}</h2>
       </div>
       <div className="navigation">
         <Link className="link" to={`/`}>
-            Leagues
+          Leagues
         </Link>
-        <Link className="link" to={`/`}>
-            Courses
+        <Link
+          className={user?.leagueId ? "link" : "link disabled"}
+          to={`/league/${user?.leagueId}/courses`}
+        >
+          Courses
         </Link>
-        <Link className="link" to={`/`}>
-            Scoreboard
+        <Link className="link" to={`/scoreboard`}>
+          Scoreboard
         </Link>
       </div>
       <span className="log-out" onClick={logOut}>

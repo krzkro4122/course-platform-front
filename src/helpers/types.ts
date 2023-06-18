@@ -33,3 +33,29 @@ export type League = {
     imageSrc: string,
     courseIds: string[]
 };
+
+export type User = {
+    id: string,
+    username: Username,
+    leagueId: string | null,
+    score: number
+}
+
+export type Username = String | undefined;
+export type Password = String | undefined;
+export type FirstName = String | undefined;
+export type LastName = String | undefined;
+export type Email = String | undefined;
+export type Token = string;
+
+export enum FormType {
+    Login,
+    Register,
+}
+
+export interface RegistrationInfo {
+    email: Email,
+    password: Password,
+    firstName: FirstName,
+    LastName: LastName,
+}
