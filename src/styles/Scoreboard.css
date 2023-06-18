@@ -14,7 +14,7 @@
     color: var(--accent-color);
     border-radius: 0.5rem;
     list-style: none;
-    width: 20rem;
+    width: clamp(20rem, 40%, 60%);
     display: flex;
     justify-content: space-between;
 }
