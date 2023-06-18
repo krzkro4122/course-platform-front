@@ -1,0 +1,59 @@
+.header {
+    background-color: var(--bg-darker);
+
+    font-size: x-large;
+    height: 2rem;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    outline: solid var(--accent-color);
+
+    display: flex;
+    justify-content: space-around;
+    place-content: center;
+}
+
+.userInfo {
+    flex: 0.4;
+    display: flex;
+    gap: 3rem;
+}
+
+.username,
+.score {
+    font-size: x-large;
+    color: var(--accent-color);
+}
+
+.log-out {
+    background-color: var(--accent-color);
+    /* border: solid 0.1rem var(--accent-color); */
+    border-radius: 0.5rem;
+    font-size: x-large;
+    color: var(--bg-darker);
+    width: 6rem;
+    padding-left: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 2.4rem;
+}
+
+.log-out:hover {
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
+.navigation {
+    flex: 0.5;
+    display: flex;
+    gap: 3rem;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.link:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}

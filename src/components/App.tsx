@@ -6,12 +6,14 @@ import LeagueBrowser from "./League/LeagueBrowser";
 import TaskDashboard from "./Task/TaskDashboard";
 import Register from "./Authentication/Register";
 import Login from "./Authentication/Login";
+import Header from "./Header";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
+          <Header />
           <Routes>
             <Route index path="/" element={<LeagueBrowser />} />
             <Route path="/login" element={<Login />} />
