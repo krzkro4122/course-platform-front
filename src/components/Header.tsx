@@ -24,16 +24,16 @@ function Header() {
         <h2 className="score">Score: {user?.score}</h2>
       </div>
       <div className="navigation">
-        <Link className="link" to={`/`}>
+        <Link className="link" to={`/p12/`}>
           Leagues
         </Link>
         <Link
           className={user?.leagueId ? "link" : "link disabled"}
-          to={`/league/${user?.leagueId}/courses`}
+          to={`/p12/league/${user?.leagueId}/courses`}
         >
           Courses
         </Link>
-        <Link className="link" to={`/scoreboard`}>
+        <Link className="link" to={`/p12/scoreboard`}>
           Scoreboard
         </Link>
       </div>

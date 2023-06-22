@@ -15,12 +15,12 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route index path="/" element={<LeagueBrowser />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/league/:id/courses" element={<CourseBrowser />} />
-            <Route path="/course/:id/tasks" element={<TaskDashboard />} />
-            <Route path="/scoreboard" element={<Scoreboard />} />
+            <Route index path="/p12" element={<LeagueBrowser />} />
+            <Route path="/p12/login" element={<Login />} />
+            <Route path="/p12/register" element={<Register />} />
+            <Route path="/p12/league/:id/courses" element={<CourseBrowser />} />
+            <Route path="/p12/course/:id/tasks" element={<TaskDashboard />} />
+            <Route path="/p12/scoreboard" element={<Scoreboard />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
