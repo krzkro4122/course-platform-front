@@ -42,7 +42,7 @@ const AuthProvider = ({ children }: AuthProps) => {
   }: RegistrationInfo) => {
     const user: User = {
       email: email,
-      score: 100,
+      score: 50,
       leagueId: null,
       id: "0",
     };
@@ -86,7 +86,7 @@ const AuthProvider = ({ children }: AuthProps) => {
   const loginAndSetUser = async (email: Email, password: Password) => {
     const user: User = {
       email: email,
-      score: 1000,
+      score: 50,
       leagueId: null,
       id: "0",
     };

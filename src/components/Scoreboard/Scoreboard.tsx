@@ -9,14 +9,22 @@ import "styles/Scoreboard.css";
 
 function Scoreboard() {
   const { user } = useContext(AuthContext);
-  const users = fetchUsers().sort((a, b) => {
+  const users = [...fetchUsers(), user!].sort((a, b) => {
     return b.score - a.score;
   });
-  users.push(user!);
   const leagues = fetchLeagues();
   const usersFormatted = users.map((user, index) => {
-    let leagueColor = leagues.find((league) => league.id === user.leagueId)?.color
-    return <ScoreCard user={user} key={index} index={index} leagueColor={leagueColor}/>;
+    let leagueColor = leagues.find(
+      (league) => league.id === user.leagueId
+    )?.color;
+    return (
+      <ScoreCard
+        user={user}
+        key={index}
+        index={index}
+        leagueColor={leagueColor}
+      />
+    );
   });
   return useGuard(<div className="scoreboard">{usersFormatted}</div>);
 }
