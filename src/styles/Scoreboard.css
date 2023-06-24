@@ -12,6 +12,7 @@
     font-size: x-large;
     outline: solid var(--accent-color);
     color: var(--accent-color);
+    background-color: var(--bg-darker);
     border-radius: 0.5rem;
     list-style: none;
     width: clamp(20rem, 40%, 60%);
