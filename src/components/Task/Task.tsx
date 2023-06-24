@@ -1,5 +1,7 @@
+import { useEffect, useState, useContext } from "react";
+
 import { Task } from "helpers/types";
-import { useEffect, useState } from "react";
+import { AuthContext } from "components/Authentication/AuthProvider";
 
 interface TaskInfo {
   task: Task;
@@ -8,6 +10,21 @@ interface TaskInfo {
 
 function Task({ task, localIndex }: TaskInfo) {
   const [pickedIndex, setPickedIndex] = useState<number | null>(null);
+  const { user, setUser } = useContext(AuthContext);
+  const handleCorrectAnswer = () => {
+    setUser({
+      id: user!.id,
+      email: user!.email,
+      leagueId: user!.leagueId,
+      score: user!.score + 100,
+    });
+    alert("Correct answer!");
+    return;
+  };
+  const handleIncorrectAnswer = () => {
+    alert("Incorrect answer!");
+    return;
+  };
   const markAsPicked = (pi: number) => {
     setPickedIndex(pi);
   };
@@ -24,14 +41,10 @@ function Task({ task, localIndex }: TaskInfo) {
 
     if (taskIndeces.includes(pickedIndex!)) {
       if (answers.at(pickedIndex!)?.isCorrect) {
-        alert("Correct answer!");
-        return;
+        return handleCorrectAnswer();
       } else {
-        alert("Try again!");
+        return handleIncorrectAnswer();
       }
-    } else {
-      alert("Nothing picked!");
-      return;
     }
   };
   const { question, answers } = task;
@@ -65,7 +78,7 @@ function Task({ task, localIndex }: TaskInfo) {
           </legend>
           <div id="answers">{answersFormatted}</div>
           <div id="checkContainer">
-            <button type="submit" id="check">
+            <button type="submit" id="check" className={pickedIndex ? "" : "disabled"}>
               Check
             </button>
           </div>
