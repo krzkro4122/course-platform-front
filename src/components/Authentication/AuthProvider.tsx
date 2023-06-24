@@ -7,18 +7,22 @@ import {
   useState,
 } from "react";
 import { encode } from "js-base64";
-import { User, Password, Email } from "helpers/types";
+import { User, Password, Email, Token, RegistrationInfo } from "helpers/types";
 
+const PRZEMEK_LOGIN = "http://10.130.51.97:8090/auth/login";
 const BACKEND_ORIGIN = "http://207.154.246.164:8090";
 const BACKEND_LOGIN = `${BACKEND_ORIGIN}/auth/login`;
 const BACKEND_REGISTER = `${BACKEND_ORIGIN}/auth/register`;
+
+type TokenResponse = { token: Token; userId: string };
 
 interface authInfo {
   user: User | null;
   unsetUser: () => void;
   setLeague: (leagueId: string) => void;
   setUser: Dispatch<SetStateAction<User | null>>;
-  fetchAndSetUser: (email: Email, password: Password) => void;
+  loginAndSetUser: (email: Email, password: Password) => Promise<User>;
+  registerAndSetUser: (registartionInfo: RegistrationInfo) => Promise<User>;
 }
 
 export const AuthContext = createContext<authInfo>({} as authInfo);
@@ -30,37 +34,91 @@ interface AuthProps {
 const AuthProvider = ({ children }: AuthProps) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const fetchLoginAndSetUser = async (
-    email: Email,
-    password: Password
-  ) => {
-    console.log(`Fetching from ${BACKEND_LOGIN}...`);
+  const registerAndSetUser = async ({
+    email,
+    firstName,
+    lastName,
+    password,
+  }: RegistrationInfo) => {
+    const user: User = {
+      email: email,
+      score: 100,
+      leagueId: null,
+      id: "0",
+    };
+    const userJson = JSON.stringify(user);
+    localStorage.setItem("user", userJson);
+    setUser(user);
+    return Promise.resolve(user);
+    // return await fetch(BACKEND_REGISTER, {
+    //   method: "POST",
+    //   referrerPolicy: "origin",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     email,
+    //     firstName,
+    //     lastName,
+    //     password,
+    //   }),
+    // })
+    //   .then(async function (res) {
+    //     console.log(res);
+    //     // console.log(res.body);
+    //     if (res.status == 200) return await res.json();
+    //   })
+    //   .then(function (data: { token: Token; userId: string }) {
+    //     console.log(data);
+    //     const user: User = {
+    //       email: email,
+    //       score: 0, // NEED THIS
+    //       leagueId: null, // NEED THIS
+    //       id: data.userId,
+    //     };
+    //     const userJson = JSON.stringify(user);
+    //     localStorage.setItem("user", userJson);
+    //     setUser(user);
+    //     return data;
+    //   });
+  };
 
-    return await fetch(BACKEND_LOGIN, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        Authorization: "Basic " + encode(email + ":" + password),
-      },
-    })
-      .then(function (res) {
-        console.log(res.status);
-        // console.log(res.body);
-        if (res.status == 200) return res.text();
-      })
-      .then(function (token) {
-        console.log(token);
-        const mockUser: User = {
-          email: email,
-          score: 0,
-          leagueId: null,
-          id: "0",
-        };
-        const mockUserJson = JSON.stringify(mockUser);
-        localStorage.setItem("user", mockUserJson);
-        setUser(mockUser);
-        return token;
-      });
+  const loginAndSetUser = async (email: Email, password: Password) => {
+    const user: User = {
+      email: email,
+      score: 1000,
+      leagueId: null,
+      id: "0",
+    };
+    const userJson = JSON.stringify(user);
+    localStorage.setItem("user", userJson);
+    setUser(user);
+    return Promise.resolve(user);
+    // return await fetch(BACKEND_LOGIN, {
+    //   method: "POST",
+    //   referrerPolicy: "origin",
+    //   headers: {
+    //     Authorization: "Basic " + encode(email + ":" + password),
+    //   },
+    // })
+    //   .then(async function (res) {
+    //     console.log(res);
+    //     // console.log(res.body);
+    //     if (res.status == 200) return await res.json();
+    //   })
+    //   .then(function (data: TokenResponse) {
+    //     console.log(data);
+    //     const user: User = {
+    //       email: email,
+    //       score: 0, // NEED THIS
+    //       leagueId: null, // NEED THIS
+    //       id: data.userId,
+    //     };
+    //     const userJson = JSON.stringify(user);
+    //     localStorage.setItem("user", userJson);
+    //     setUser(user);
+    //     return data;
+    //   });
   };
 
   const unsetUser = () => {
@@ -89,7 +147,8 @@ const AuthProvider = ({ children }: AuthProps) => {
       value={{
         user,
         setUser,
-        fetchAndSetUser: fetchLoginAndSetUser,
+        loginAndSetUser,
+        registerAndSetUser,
         unsetUser,
         setLeague,
       }}

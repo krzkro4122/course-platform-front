@@ -45,7 +45,7 @@ export type Password = String | undefined;
 export type FirstName = String | undefined;
 export type LastName = String | undefined;
 export type Email = String | undefined;
-export type Token = string;
+export type Token = string | undefined;
 
 export enum FormType {
     Login,
@@ -56,5 +56,5 @@ export interface RegistrationInfo {
     email: Email,
     password: Password,
     firstName: FirstName,
-    LastName: LastName,
+    lastName: LastName,
 }

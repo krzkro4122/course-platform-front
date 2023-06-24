@@ -14,7 +14,7 @@ function Login() {
   const [emailIsLegal, setEmailIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { fetchAndSetUser, setUser } = useContext(AuthContext);
+  const { loginAndSetUser } = useContext(AuthContext);
 
   useEffect(() => {
     setEmailIsLegal(validateEmail(email));
@@ -29,7 +29,7 @@ function Login() {
       return;
     }
 
-    fetchAndSetUser(email, password);
+    await loginAndSetUser(email, password);
   }
   return usePermit(
     <div className="page">

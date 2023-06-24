@@ -7,7 +7,7 @@ import {
   validateFirstName,
   validateLastName,
 } from "helpers/validation";
-import { Email, Password, FirstName, LastName, User } from "helpers/types";
+import { Email, Password, FirstName, LastName } from "helpers/types";
 import { AuthContext } from "./AuthProvider";
 import { usePermit } from "./useAuth";
 
@@ -25,7 +25,7 @@ function register() {
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const { fetchAndSetUser } = useContext(AuthContext);
+  const { registerAndSetUser } = useContext(AuthContext);
 
   useEffect(() => {
     setEmialIsLegal(validateEmail(email));
@@ -43,7 +43,12 @@ function register() {
       return;
     }
 
-    fetchAndSetUser(email, password);
+    registerAndSetUser({
+      email,
+      firstName,
+      lastName,
+      password,
+    });
   }
 
   return usePermit(

@@ -7,7 +7,7 @@ export function useGuard(element: ReactElement, path: string = "/p12/login") {
   const { user } = useContext(AuthContext);
   // console.log(user);
   if (!user) {
-    console.log(`Navigating to ${path}...`);
+    // console.log(`Navigating to ${path}...`);
     return <Navigate replace to={path} />;
   } else {
     return element;
@@ -18,7 +18,7 @@ export function usePermit(element: ReactElement, path: string = "/p12/") {
   const { user } = useContext(AuthContext);
   // console.log(user);
   if (user) {
-    console.log(`Navigating to ${path}...`);
+    // console.log(`Navigating to ${path}...`);
     return <Navigate replace to={path} />;
   } else {
     return element;
