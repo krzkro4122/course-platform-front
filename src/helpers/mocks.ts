@@ -3,90 +3,90 @@ import { Task, Course, League, LeagueType, User } from './types';
 export const TASKS: Task[] = [
     {
         id: "1",
-        question: "Who is Ligma?",
+        question: "Who is the youngest?",
         answers: [
             {
-                text: "I am.",
+                text: "Elon Musk",
                 isCorrect: false
             },
             {
-                text: "He is -> 🚶‍♂️",
-                isCorrect: false
-            },
-            {
-                text: "George Washingballs",
+                text: "DJ Khaled",
                 isCorrect: true
+            },
+            {
+                text: "Michael Jordan",
+                isCorrect: false
             }
         ]
     },
     {
         id: "2",
-        question: "Where does Hugh Mongoose live?",
+        question: "Which direction is NORTH on a standard map?",
         answers: [
             {
-                text: "In a small shed behind the bridge",
-                isCorrect: true
-            },
-            {
-                text: "Kentucky, Arizona",
+                text: "Left",
                 isCorrect: false
             },
             {
-                text: "Washingballs???",
+                text: "Up ",
+                isCorrect: true
+            },
+            {
+                text: "Down",
                 isCorrect: false
             }
         ]
     },
     {
         id: "3",
-        question: "Do stormtroopers poop?",
+        question: "What year is it?",
         answers: [
             {
-                text: "Maybe once a day",
+                text: "2021",
                 isCorrect: false
             },
             {
-                text: "It's in the name, duh",
+                text: "2047",
                 isCorrect: false
             },
             {
-                text: "I can't stop washingballs",
+                text: "2023",
                 isCorrect: true
             }
         ]
     },
     {
         id: "4",
-        question: "Is Alan Walker really walking?",
+        question: "What does SQL stand for?",
         answers: [
             {
-                text: "I am.",
+                text: "Structural Query Language",
                 isCorrect: false
             },
             {
-                text: "He is ---> 🚶‍♂️",
+                text: "Structured Query Language",
                 isCorrect: true
             },
             {
-                text: "George Washinballs",
+                text: "Structuring Query Language",
                 isCorrect: false
             }
         ]
     },
     {
         id: "5",
-        question: "Is this a question?",
+        question: "Which number is divisible by 17?",
         answers: [
             {
-                text: "That depends...",
+                text: "47",
                 isCorrect: false
             },
             {
-                text: "Yes (firmly)",
+                text: "51",
                 isCorrect: true
             },
             {
-                text: "Ye-, yeah (shivering)",
+                text: "88",
                 isCorrect: false
             }
         ]
@@ -100,7 +100,7 @@ export const TASKS: Task[] = [
                 isCorrect: true
             },
             {
-                text: "Idk, i am not a zoologist",
+                text: "Probably not - their machines after all",
                 isCorrect: false
             },
             {
@@ -115,68 +115,68 @@ export const TASKS: Task[] = [
         answers: [
             {
                 text: "The third answer",
+                isCorrect: true
+            },
+            {
+                text: "That one",
                 isCorrect: false
             },
             {
-                text: "Me",
-                isCorrect: false
-            },
-            {
-                text: "I really, reaaaaally like cats",
+                text: "This one",
                 isCorrect: true
             }
         ]
     },
     {
         id: "8",
-        question: "Would you mind?",
+        question: "How is georgegroeus spelled?",
         answers: [
             {
-                text: "Probably",
+                text: "gorgeous",
                 isCorrect: true
             },
             {
-                text: "I hope this isn't a math question",
+                text: "gorgeuos",
                 isCorrect: false
             },
             {
-                text: "I have no mind of my own",
+                text: "gregory",
                 isCorrect: false
             }
         ]
     },
     {
         id: "9",
-        question: "Who invented racism?",
+        question: "What is YouTube?",
         answers: [
             {
-                text: "MGK",
+                text: "A terrorist organisation",
                 isCorrect: false
             },
             {
-                text: "Definitely not Eminem",
+                text: "A blockchain-based pyramid scheme",
                 isCorrect: false
             },
             {
-                text: "Perhaps it was Eminem",
+                text: "A video-oriented social media platform",
                 isCorrect: true
             }
         ]
     },
     {
         id: "10",
-        question: "Did any1 even read this?",
+        question: "What does 3 * 1 + 3? equate to?",
         answers: [
             {
-                text: "Probably not",
+                text: "10",
                 isCorrect: false
             },
             {
-                text: "Chill, these are just mock questions",
+                text: "6",
                 isCorrect: true
             },
             {
-                text: "I really shouldn't be the one doing this...",
+                text: "3",
                 isCorrect: false
             }
         ]
@@ -190,7 +190,7 @@ export const TASKS: Task[] = [
                 isCorrect: false
             },
             {
-                text: "It was trying to abolish its own falsehoods",
+                text: "It was seeking purpose",
                 isCorrect: true
             },
             {
@@ -208,11 +208,11 @@ export const TASKS: Task[] = [
                 isCorrect: true
             },
             {
-                text: "I reckon that those will not be seen. If you do see this question please tell me",
+                text: "Hi mom!",
                 isCorrect: false
             },
             {
-                text: "WASHINGBALLS!!!",
+                text: "No it is not",
                 isCorrect: false
             }
         ]
