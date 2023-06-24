@@ -14,7 +14,7 @@ function TaskDashboard() {
   const tasks = fetchTasks().filter((task) => {
     return course!.taskIds.includes(task.id);
   });
-  const [activeTaskIndex, setActiveTaskIndex] = useState(0);
+  const [activeTaskIndex, setActiveTaskIndex] = useState<number>(0);
   const sibebarProps: SidebarProps = {
     activeTaskIndex: activeTaskIndex,
     setActiveTaskIndex: setActiveTaskIndex,
@@ -23,7 +23,13 @@ function TaskDashboard() {
   return useGuard(
     <div className="taskDashboard">
       <Sidebar {...sibebarProps} />
-      <Task task={tasks[activeTaskIndex]} localIndex={activeTaskIndex} />
+      <Task
+        maxTaskIndex={tasks.length}
+        activeTaskIndex={activeTaskIndex}
+        setActiveTaskIndex={setActiveTaskIndex}
+        task={tasks[activeTaskIndex]}
+        localIndex={activeTaskIndex}
+      />
     </div>
   );
 }
