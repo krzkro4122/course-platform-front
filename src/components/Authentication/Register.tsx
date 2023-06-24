@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 
 import {
   validatePassword,
-  validateUsername,
+  validateEmail,
   validateFirstName,
   validateLastName,
 } from "helpers/validation";
-import { Username, Password, FirstName, LastName, User } from "helpers/types";
+import { Email, Password, FirstName, LastName, User } from "helpers/types";
 import { AuthContext } from "./AuthProvider";
 import { usePermit } from "./useAuth";
 
 import "styles/Auth.css";
 
 function register() {
-  const [username, setUsername] = useState<Username>();
+  const [email, setEmail] = useState<Email>();
   const [password, setPassword] = useState<Password>();
   const [firstName, setFirstName] = useState<FirstName>();
   const [lastName, setLastName] = useState<LastName>();
   const [passwordRepeat, setPasswordRepeat] = useState<Password>();
-  const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
+  const [emailIsLegal, setEmialIsLegal] = useState<boolean>(true);
   const [firstNameIsLegal, setFirstNameIsLegal] = useState<boolean>(true);
   const [lastNameIsLegal, setLastNameIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
@@ -28,22 +28,22 @@ function register() {
   const { fetchAndSetUser } = useContext(AuthContext);
 
   useEffect(() => {
-    setUsernameIsLegal(validateUsername(username));
+    setEmialIsLegal(validateEmail(email));
     setFirstNameIsLegal(validateFirstName(firstName));
     setLastNameIsLegal(validateLastName(lastName));
     setPasswordIsLegal(validatePassword(password));
     setPasswordsMatch(password === passwordRepeat);
-  }, [username, password, passwordRepeat, firstName, lastName]);
+  }, [email, password, passwordRepeat, firstName, lastName]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitted(true);
 
-    if (!usernameIsLegal || !passwordIsLegal || !passwordsMatch) {
+    if (!emailIsLegal || !passwordIsLegal || !passwordsMatch) {
       return;
     }
 
-    fetchAndSetUser(username, password);
+    fetchAndSetUser(email, password);
   }
 
   return usePermit(
@@ -54,10 +54,10 @@ function register() {
           <label>
             <input
               type="text"
-              placeholder="Username / E-mail"
-              onChange={(event) => setUsername(event.target.value)}
+              placeholder="E-mail"
+              onChange={(event) => setEmail(event.target.value)}
               className={
-                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+                (!emailIsLegal && isSubmitted ? "invalid" : "") + " input"
               }
               autoFocus
             />

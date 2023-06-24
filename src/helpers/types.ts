@@ -36,12 +36,11 @@ export type League = {
 
 export type User = {
     id: string,
-    username: Username,
+    email: Email,
     leagueId: string | null,
     score: number
 }
 
-export type Username = String | undefined;
 export type Password = String | undefined;
 export type FirstName = String | undefined;
 export type LastName = String | undefined;

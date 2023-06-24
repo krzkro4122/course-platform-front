@@ -25,7 +25,7 @@
     gap: 3rem;
 }
 
-.username,
+.email,
 .score {
     font-size: x-large;
     color: var(--accent-color);

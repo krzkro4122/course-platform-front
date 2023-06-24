@@ -1,8 +1,8 @@
-import { Email, FirstName, LastName, Password, Token, Username } from "./types";
+import { Email, FirstName, LastName, Password, Token } from "./types";
 
-export function validateUsername(username: Username) {
-    // TODO - username validation
-    return !!username;
+export function validateEmail(email: Email) {
+    // TODO - email validation
+    return !!email;
 }
 
 export function validateFirstName(firstName: FirstName) {
@@ -18,12 +18,6 @@ export function validateLastName(lastName: LastName) {
 export function validatePassword(password: Password) {
     // TODO - password validation
     return !!password;
-}
-
-
-export function validateEmail(email: Email) {
-    // TODO - password validation
-    return !!email;
 }
 
 export function validateToken(token: Token) {

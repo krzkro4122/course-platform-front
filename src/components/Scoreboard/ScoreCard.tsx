@@ -9,7 +9,7 @@ function ScoreCard({ user, index }: ScoreInfo) {
   return (
     <li className="scoreCard">
       <span>
-        {index + 1}. {user.username}
+        {index + 1}. {user.email}
       </span>
       <span className="score">Score: {user.score}</span>
     </li>

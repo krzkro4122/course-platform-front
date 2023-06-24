@@ -1,35 +1,35 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { validatePassword, validateUsername } from "helpers/validation";
+import { validatePassword, validateEmail } from "helpers/validation";
 import { AuthContext } from "./AuthProvider";
 import { usePermit } from "./useAuth";
 
 import "styles/Auth.css";
-import { Username, Password } from "helpers/types";
+import { Email, Password } from "helpers/types";
 
 function Login() {
-  const [username, setUsername] = useState<Username>();
+  const [email, setEmail] = useState<Email>();
   const [password, setPassword] = useState<Password>();
-  const [usernameIsLegal, setUsernameIsLegal] = useState<boolean>(true);
+  const [emailIsLegal, setEmailIsLegal] = useState<boolean>(true);
   const [passwordIsLegal, setPasswordIsLegal] = useState<boolean>(true);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const { fetchAndSetUser, setUser } = useContext(AuthContext);
 
   useEffect(() => {
-    setUsernameIsLegal(validateUsername(username));
+    setEmailIsLegal(validateEmail(email));
     setPasswordIsLegal(validatePassword(password));
-  }, [username, password]);
+  }, [email, password]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitted(true);
 
-    if (!usernameIsLegal || !passwordIsLegal) {
+    if (!emailIsLegal || !passwordIsLegal) {
       return;
     }
 
-    fetchAndSetUser(username, password);
+    fetchAndSetUser(email, password);
   }
   return usePermit(
     <div className="page">
@@ -39,10 +39,10 @@ function Login() {
           <label>
             <input
               type="text"
-              placeholder="Username"
-              onChange={(event) => setUsername(event.target.value)}
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
               className={
-                (!usernameIsLegal && isSubmitted ? "invalid" : "") + " input"
+                (!emailIsLegal && isSubmitted ? "invalid" : "") + " input"
               }
               autoFocus
             />

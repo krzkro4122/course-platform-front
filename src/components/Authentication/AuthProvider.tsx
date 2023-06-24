@@ -6,14 +6,19 @@ import {
   useEffect,
   useState,
 } from "react";
-import { User, Username, Password } from "helpers/types";
+import { encode } from "js-base64";
+import { User, Password, Email } from "helpers/types";
+
+const BACKEND_ORIGIN = "http://207.154.246.164:8090";
+const BACKEND_LOGIN = `${BACKEND_ORIGIN}/auth/login`;
+const BACKEND_REGISTER = `${BACKEND_ORIGIN}/auth/register`;
 
 interface authInfo {
   user: User | null;
   unsetUser: () => void;
   setLeague: (leagueId: string) => void;
   setUser: Dispatch<SetStateAction<User | null>>;
-  fetchAndSetUser: (username: Username, password: Password) => void;
+  fetchAndSetUser: (email: Email, password: Password) => void;
 }
 
 export const AuthContext = createContext<authInfo>({} as authInfo);
@@ -25,19 +30,37 @@ interface AuthProps {
 const AuthProvider = ({ children }: AuthProps) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const fetchAndSetUser = (username: Username, password: Password) => {
-    // TODO - from API + token validation
-    // const token: Token = "";
-    const mockUser: User = {
-      id: "0",
-      username: username,
-      score: 0,
-      leagueId: null,
-    };
-    const mockUserJson = JSON.stringify(mockUser);
-    localStorage.setItem("user", mockUserJson);
-    setUser(mockUser);
-    return mockUser;
+  const fetchLoginAndSetUser = async (
+    email: Email,
+    password: Password
+  ) => {
+    console.log(`Fetching from ${BACKEND_LOGIN}...`);
+
+    return await fetch(BACKEND_LOGIN, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        Authorization: "Basic " + encode(email + ":" + password),
+      },
+    })
+      .then(function (res) {
+        console.log(res.status);
+        // console.log(res.body);
+        if (res.status == 200) return res.text();
+      })
+      .then(function (token) {
+        console.log(token);
+        const mockUser: User = {
+          email: email,
+          score: 0,
+          leagueId: null,
+          id: "0",
+        };
+        const mockUserJson = JSON.stringify(mockUser);
+        localStorage.setItem("user", mockUserJson);
+        setUser(mockUser);
+        return token;
+      });
   };
 
   const unsetUser = () => {
@@ -66,7 +89,7 @@ const AuthProvider = ({ children }: AuthProps) => {
       value={{
         user,
         setUser,
-        fetchAndSetUser,
+        fetchAndSetUser: fetchLoginAndSetUser,
         unsetUser,
         setLeague,
       }}

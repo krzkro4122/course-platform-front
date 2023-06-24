@@ -14,13 +14,13 @@ function Header() {
   }
 
   if (!user) {
-    return (<div></div>);
+    return <div></div>;
   }
 
   return (
     <div className="header">
       <div className="userInfo">
-        <h2 className="username">{user?.username}</h2>
+        <h2 className="email">{user?.email}</h2>
         <h2 className="score">Score: {user?.score}</h2>
       </div>
       <div className="navigation">
