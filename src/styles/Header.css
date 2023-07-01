@@ -20,10 +20,17 @@
 }
 
 .userInfo {
-    flex: 0.4;
+    flex: 0.45;
     display: flex;
     gap: 3rem;
 }
+
+/* #Layer_1,
+#logo {
+    color: wheat;
+    stroke: wheat;
+    fill: wheat;
+} */
 
 .email,
 .score {
@@ -45,7 +52,7 @@
 }
 
 .navigation {
-    flex: 0.5;
+    flex: 0.45;
     display: flex;
     gap: 3rem;
 }

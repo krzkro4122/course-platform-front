@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
-import { League } from "helpers/types";
+import { League, LeagueType } from "helpers/types";
 import { AuthContext } from "components/Authentication/AuthProvider";
+import BugLeagueIcon from "assets/leagueIcons/BugLeagueIcon.png";
+import FireLeagueIcon from "assets/leagueIcons/FireLeagueIcon.png";
+import GhostLeagueIcon from "assets/leagueIcons/GhostLeagueIcon.png";
 
 interface leagueInfo {
   league: League;
@@ -10,6 +13,19 @@ interface leagueInfo {
 
 function LeagueCard({ league }: leagueInfo) {
   const { setLeague } = useContext(AuthContext);
+
+  const leagueType2Icon = (leagueType: LeagueType) => {
+    switch (leagueType) {
+      case LeagueType.BUG:
+        return BugLeagueIcon;
+      case LeagueType.FIRE:
+        return FireLeagueIcon;
+      case LeagueType.GHOST:
+        return GhostLeagueIcon;
+      default:
+        return BugLeagueIcon;
+    }
+  };
 
   const setColor = () => {
     document.documentElement.style.setProperty("--accent-color", league.color);
@@ -30,7 +46,7 @@ function LeagueCard({ league }: leagueInfo) {
       <Link to={`/p12/league/${league.id}/courses`} onClick={() => setColor()}>
         <img
           className="browserCardImage"
-          src={league.imageSrc}
+          src={leagueType2Icon(league.type)}
           alt={`Image of the ${league.type} league.`}
         />
         <h1
