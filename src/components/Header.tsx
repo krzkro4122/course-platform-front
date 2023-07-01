@@ -13,7 +13,7 @@ function Header() {
   function logOut() {
     console.log("logging out...");
     unsetUser();
-    navigate("/p12");
+    navigate("/cursum");
   }
 
   if (!user) {
@@ -28,16 +28,16 @@ function Header() {
         <h2 className="score">Score: {user?.score}</h2>
       </div>
       <div className="navigation">
-        <Link className="link" to={`/p12/`}>
+        <Link className="link" to={`/cursum/`}>
           Leagues
         </Link>
         <Link
           className={user?.leagueId ? "link" : "link disabled"}
-          to={`/p12/league/${user?.leagueId}/courses`}
+          to={`/cursum/league/${user?.leagueId}/courses`}
         >
           Courses
         </Link>
-        <Link className="link" to={`/p12/scoreboard`}>
+        <Link className="link" to={`/cursum/scoreboard`}>
           Scoreboard
         </Link>
       </div>

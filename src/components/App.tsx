@@ -16,12 +16,18 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route index path="/p12" element={<LeagueBrowser />} />
-            <Route path="/p12/login" element={<Login />} />
-            <Route path="/p12/register" element={<Register />} />
-            <Route path="/p12/league/:id/courses" element={<CourseBrowser />} />
-            <Route path="/p12/course/:id/tasks" element={<TaskDashboard />} />
-            <Route path="/p12/scoreboard" element={<Scoreboard />} />
+            <Route index path="/cursum" element={<LeagueBrowser />} />
+            <Route path="/cursum/login" element={<Login />} />
+            <Route path="/cursum/register" element={<Register />} />
+            <Route
+              path="/cursum/league/:id/courses"
+              element={<CourseBrowser />}
+            />
+            <Route
+              path="/cursum/course/:id/tasks"
+              element={<TaskDashboard />}
+            />
+            <Route path="/cursum/scoreboard" element={<Scoreboard />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

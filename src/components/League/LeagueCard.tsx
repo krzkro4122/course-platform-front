@@ -43,7 +43,10 @@ function LeagueCard({ league }: leagueInfo) {
         border: `solid 0.2rem ${league.color}`,
       }}
     >
-      <Link to={`/p12/league/${league.id}/courses`} onClick={() => setColor()}>
+      <Link
+        to={`/cursum/league/${league.id}/courses`}
+        onClick={() => setColor()}
+      >
         <img
           className="browserCardImage"
           src={leagueType2Icon(league.type)}
